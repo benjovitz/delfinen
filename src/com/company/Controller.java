@@ -7,7 +7,7 @@ public class Controller {
 
 
 
-    public void kasserMenu(){
+    public void kassérMenu(){
         String answer = sc.nextLine();
         switch (answer){
             default -> System.out.println("invalid input");
@@ -16,4 +16,14 @@ public class Controller {
             //case "0" -> mainMenu();
         }
     }
-}
+
+    public void formandMenu() {
+        String choice = sc.nextLine();
+        /*switch (choice) {
+            case "1" -> medlemsliste();
+            case "2" -> tilføjMedlem();
+            case "3" -> fjernMedlem();
+            default -> ui.invalidInput();
+         */
+        }
+    }
