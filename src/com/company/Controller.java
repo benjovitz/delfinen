@@ -12,19 +12,18 @@ public class Controller {
         switch (recieved){
             //case "1" -> seRekorder();
             //case "2" -> seKonkurenceMedlemmer();
-            //case "3" -> mainMenu();
-
-
+            //case "0" -> mainMenu();
+            //default -> ui.invalidInput();
         }
     }
 
     public void kassérMenu(){
         String answer = sc.nextLine();
         switch (answer){
-            default -> System.out.println("invalid input");
             //case "1"-> restance();
             //case "2" -> indkomst();
             //case "0" -> mainMenu();
+            //default -> ui.invalidInput();
         }
     }
 
@@ -34,6 +33,7 @@ public class Controller {
             case "1" -> medlemsliste();
             case "2" -> tilføjMedlem();
             case "3" -> fjernMedlem();
+            case "0" -> mainmenu();
             default -> ui.invalidInput();
          */
         }
