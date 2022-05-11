@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Controller {
     private Scanner sc = new Scanner(System.in);
     private Træner træner = new Træner();
+    private Filehandler filehandler = new Filehandler();
+
 
     public void mainMenu() {
         System.out.println("mainMenu");
@@ -29,7 +31,7 @@ public class Controller {
         switch (choice) {
             //case "1" -> seRekorder();
             case "2" -> træner.viewArray();
-            //case "0" -> mainMenu();
+            case "0" -> mainMenu();
             //default -> ui.invalidInput();
         }
     }
@@ -41,7 +43,7 @@ public class Controller {
         switch (choice) {
             //case "1"-> restance();
             //case "2" -> indkomst();
-            //case "0" -> mainMenu();
+            case "0" -> mainMenu();
             //default -> ui.invalidInput();
         }
     }
@@ -52,7 +54,7 @@ public class Controller {
         //ui.formandMenu
         String choice = sc.nextLine();
         switch (choice) {
-            //case "1" -> medlemsliste();
+            case "1" -> filehandler.readFile();
             case "2" -> tilføjMedlem();
             //case "3" -> fjernMedlem();
             case "0" -> mainMenu();

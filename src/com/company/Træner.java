@@ -23,9 +23,7 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
 
     }
 
-    public void viewArray(){
-        System.out.println(svømmers);
-    }
+
     public void tilføjKonkurrence(String name, int age, int medlemsNummer){
         if(age<18){
             JuniorKonkurrence juniorKonkurrence = new JuniorKonkurrence(name,age,medlemsNummer,1000,null);
@@ -38,4 +36,13 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
         }
 
     }
+
+    public void viewArray(){
+        System.out.println(svømmers);
+
+    }
+
+
+
+
 }
