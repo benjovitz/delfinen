@@ -1,11 +1,14 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+
+import java.io.*;
 
 public class Filehandler {
+
+    private String name;
+    private int age;
+    private int memNr;
 
     private String path = "/Users/oscarstorm/IdeaProjects/delfinen/src/memberFile.csv";
 
@@ -13,7 +16,6 @@ public class Filehandler {
     private String line = "";
 
     public void readFile() {
-
         {
             try {
                 br = new BufferedReader(new FileReader(path));
@@ -29,8 +31,25 @@ public class Filehandler {
                 e.printStackTrace();
             }
         }
+    }
 
+    public void saveRecords(String name, int age){
+
+
+        try(PrintWriter pw = new PrintWriter(path))
+        {
+        pw.write(name+",");
+        pw.write(age+",");
+        pw.write(memNr+",");
+        System.out.println("finished writing file");
+
+        }
+        catch (FileNotFoundException e)
+        {
+
+        }
 
     }
+
 
 }

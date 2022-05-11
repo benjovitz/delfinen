@@ -30,7 +30,7 @@ public class Controller {
         String choice = sc.nextLine();
         switch (choice) {
             //case "1" -> seRekorder();
-            case "2" -> træner.viewArray();
+            case "2" -> filehandler.readFile();
             case "0" -> mainMenu();
             //default -> ui.invalidInput();
         }
@@ -69,7 +69,7 @@ public class Controller {
         System.out.print("alder: ");
         int age =  sc.nextInt();
         int medlemsNummer = 1;
-
+        filehandler.saveRecords(name,age);
         System.out.println("""
                 tilføj medlem
                 ---------
