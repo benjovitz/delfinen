@@ -1,74 +1,91 @@
 package com.company;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Controller {
-    private Scanner sc = new Scanner(System.in);
-    private Træner træner = new Træner();
+    Scanner sc = new Scanner(System.in);
+    Træner træner = new Træner();
+    UI ui = new UI();
+    Date date = new Date();
+
 
     public void mainMenu() {
-        System.out.println("mainMenu");
-        //ui.mainMenu
+        ui.udskrivMainMenu();
         String choice = sc.nextLine();
-        boolean kørPogram = true;
-        while (kørPogram == true) {
+        boolean kørProgram = true;
+        while (kørProgram == true) {
             switch (choice) {
                 case "1" -> trænerMenu();
                 case "2" -> kassérMenu();
                 case "3" -> formandMenu();
-                case "0" -> kørPogram = false;
-                //default -> ui.invalidInput
+                case "0" -> kørProgram = false;
+                default -> ui.invalidInput();
             }
         }
     }
 
     public void trænerMenu() {
-        System.out.println("træner menu");
-        //ui.trænerMenu
+        ui.udskrivTrænerMenu();
         String choice = sc.nextLine();
         switch (choice) {
             //case "1" -> seRekorder();
             case "2" -> træner.viewArray();
-            //case "0" -> mainMenu();
-            //default -> ui.invalidInput();
+            //case "3" -> opretRekord();
+            case "0" -> mainMenu();
+            default -> ui.invalidInput();
         }
     }
 
     public void kassérMenu() {
-        System.out.println("kasser manu");
-        //ui.kassérMenu
+        ui.udskrivKassérMenu();
         String choice = sc.nextLine();
         switch (choice) {
             //case "1"-> restance();
             //case "2" -> indkomst();
-            //case "0" -> mainMenu();
-            //default -> ui.invalidInput();
+            case "0" -> mainMenu();
+            default -> ui.invalidInput();
         }
     }
 
 
     public void formandMenu() {
-        System.out.println("formand menu");
-        //ui.formandMenu
+        ui.udskrivFormandMenu();
         String choice = sc.nextLine();
         switch (choice) {
             //case "1" -> medlemsliste();
             case "2" -> tilføjMedlem();
             //case "3" -> fjernMedlem();
             case "0" -> mainMenu();
-            //default -> ui.invalidInput();
+            default -> ui.invalidInput();
 
         }
     }
 
-    private void tilføjMedlem() {
-        System.out.println("tilføj");
-        System.out.print("navn: ");
+    public void tilføjMedlem() {
+        ui.indtastNavn();
         String name = sc.nextLine();
-        System.out.print("alder: ");
-        int age =  sc.nextInt();
-        int medlemsNummer = 1;
+        ui.indtatsAlder();
+        int age = sc.nextInt();
+        int medlemsNummer = opretMedlemsnummer();
         træner.tilføjMedlem(name,age,medlemsNummer);
         }
+
+    public int opretMedlemsnummer() {
+        int år = date.getYear();
+        if(år < 200) {
+            år = (år - 100) * 1000;
+        } else {
+            år = (år - 200) * 1000;
+        }
+        //int senesteMedlemsnummer = træner.senesteMedlemsnummer;
+        int senesteMedlemsnummer = 1;
+        senesteMedlemsnummer++;
+        return år + senesteMedlemsnummer;
     }
+
+}
+
 
