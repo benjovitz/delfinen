@@ -7,6 +7,17 @@ public class Controller {
 
 
 
+    public void trænerMenu(){
+        String recieved = sc.nextLine();
+        switch (recieved){
+            //case "1" -> seRekorder();
+            //case "2" -> seKonkurenceMedlemmer();
+            //case "3" -> mainMenu();
+
+
+        }
+    }
+
     public void kassérMenu(){
         String answer = sc.nextLine();
         switch (answer){
