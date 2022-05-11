@@ -56,19 +56,32 @@ public class Controller {
             case "2" -> tilføjMedlem();
             //case "3" -> fjernMedlem();
             case "0" -> mainMenu();
-            //default -> ui.invalidInput();
+
 
         }
     }
 
     private void tilføjMedlem() {
-        System.out.println("tilføj");
         System.out.print("navn: ");
         String name = sc.nextLine();
         System.out.print("alder: ");
         int age =  sc.nextInt();
         int medlemsNummer = 1;
-        træner.tilføjMedlem(name,age,medlemsNummer);
+
+        System.out.println("""
+                tilføj medlem
+                ---------
+                1) motionist
+                2) konkurrence
+                """);
+        int type = sc.nextInt();
+        switch (type){
+            case 1 -> træner.tilføjMedlem(name,age,medlemsNummer);
+            case 2 -> træner.tilføjKonkurrence(name,age,medlemsNummer);
+            //default -> ui.invalidInput();
+        }
+
+
         }
     }
 
