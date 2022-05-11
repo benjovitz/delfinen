@@ -10,6 +10,7 @@ public class Controller {
         switch (choice){
             //case "1" -> seRekorder();
             //case "2" -> seKonkurenceMedlemmer();
+            //case "3" -> indtastRekkord();
             //case "0" -> mainMenu();
             //default -> ui.invalidInput();
         }
