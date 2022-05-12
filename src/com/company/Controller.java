@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class Controller {
 
-    Filehandler filehandler = new Filehandler();
-    Scanner sc = new Scanner(System.in);
-    Træner træner = new Træner();
-    UI ui = new UI();
-    Date date = new Date();
+    private Filehandler filehandler = new Filehandler();
+    private Scanner sc = new Scanner(System.in);
+    private Træner træner = new Træner();
+    private UI ui = new UI();
+    private Date date = new Date();
 
 
     public void mainMenu() throws FileNotFoundException {
@@ -83,7 +83,6 @@ public class Controller {
             case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
             default -> ui.invalidInput();
         }
-        String choice = sc.nextLine();
 
     }
 

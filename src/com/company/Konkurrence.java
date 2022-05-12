@@ -1,10 +1,10 @@
 package com.company;
 
 public abstract class Konkurrence extends Svømmer {
-    private RekortTid rekortTid;
+    private RekordTid rekordTid;
 
-    public Konkurrence(String name, int age, int medlemsNummer,RekortTid rekortTid) {
+    public Konkurrence(String name, int age, int medlemsNummer, RekordTid rekordTid) {
         super(name, age, medlemsNummer);
-        this.rekortTid=rekortTid;
+        this.rekordTid=rekordTid;
     }
 }
