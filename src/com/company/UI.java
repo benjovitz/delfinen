@@ -44,4 +44,13 @@ public class UI {
   public void invalidInput() {
     System.out.println("Din indtastning matchede ingen muligheder");
   }
+
+  public void tilføjMedlem() {
+    System.out.println("""
+            tilføj medlem
+            ---------
+            1) motionist
+            2) konkurrence
+            """);
+  }
 }

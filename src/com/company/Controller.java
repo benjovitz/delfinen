@@ -6,10 +6,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Controller {
-    private Scanner sc = new Scanner(System.in);
-    private Træner træner = new Træner();
-    private Filehandler filehandler = new Filehandler();
 
+    Filehandler filehandler = new Filehandler();
     Scanner sc = new Scanner(System.in);
     Træner træner = new Træner();
     UI ui = new UI();
@@ -75,33 +73,29 @@ public class Controller {
         ui.indtatsAlder();
         int age = sc.nextInt();
         int medlemsNummer = opretMedlemsnummer();
-        filehandler.saveRecords(name,age);
-        System.out.println("""
-                tilføj medlem
-                ---------
-                1) motionist
-                2) konkurrence
-                """);
+        filehandler.saveRecords(name, age);
+        ui.tilføjMedlem();
         int type = sc.nextInt();
-        switch (type){
-            case 1 -> træner.tilføjMedlem(name,age,medlemsNummer);
-            case 2 -> træner.tilføjKonkurrence(name,age,medlemsNummer);
+        switch (type) {
+            case 1 -> træner.tilføjMedlem(name, age, medlemsNummer);
+            case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
             default -> ui.invalidInput();
         }
-
-    public int opretMedlemsnummer() {
-        int år = date.getYear();
-        if(år < 200) {
-            år = (år - 100) * 1000;
-        } else {
-            år = (år - 200) * 1000;
-        }
-        //int senesteMedlemsnummer = træner.senesteMedlemsnummer;
-        int senesteMedlemsnummer = 1;
-        senesteMedlemsnummer++;
-        return år + senesteMedlemsnummer;
     }
 
-}
+        public int opretMedlemsnummer () {
+            int år = date.getYear();
+            if (år < 200) {
+                år = (år - 100) * 1000;
+            } else {
+                år = (år - 200) * 1000;
+            }
+            //int senesteMedlemsnummer = træner.senesteMedlemsnummer;
+            int senesteMedlemsnummer = 1;
+            senesteMedlemsnummer++;
+            return år + senesteMedlemsnummer;
+        }
+    }
+
 
 
