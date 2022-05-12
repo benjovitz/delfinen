@@ -18,10 +18,10 @@ public class Filehandler {
     public void readFile() {
         {
             try {
-                br = new BufferedReader(new FileReader(path));
+                br = new BufferedReader(new FileReader("memberFile.csv"));
 
                 while ((line = br.readLine()) != null) {
-                    String[] values = line.split(",");
+                    String[] values = line.split(";");
                     System.out.println("name: " + values[0] + " age: " + values[1] + " membernr: " + values[2]);
 
                     System.out.println(line);
@@ -36,13 +36,14 @@ public class Filehandler {
     public void saveRecords(String name, int age){
 
 
-        try(PrintWriter pw = new PrintWriter(path))
+        try(PrintStream save = new PrintStream(new File("memberFile.csv")))
         {
-        pw.write(name+",");
-        pw.write(age+",");
-        pw.write(memNr+1+",");
+        String navn = name;
+        int alder = age;
+        int medlemsnummer = memNr;
+        String csvString = navn + ";" + alder + ";" + medlemsnummer;
+        save.println(csvString);
         System.out.println("finished writing file");
-
         }
         catch (FileNotFoundException e)
         {
