@@ -6,6 +6,10 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Controller {
+    private Scanner sc = new Scanner(System.in);
+    private Træner træner = new Træner();
+    private Filehandler filehandler = new Filehandler();
+
     Scanner sc = new Scanner(System.in);
     Træner træner = new Træner();
     UI ui = new UI();
@@ -32,10 +36,11 @@ public class Controller {
         String choice = sc.nextLine();
         switch (choice) {
             //case "1" -> seRekorder();
-            case "2" -> træner.viewArray();
+            case "2" -> filehandler.readFile();
             //case "3" -> opretRekord();
             case "0" -> mainMenu();
             default -> ui.invalidInput();
+
         }
     }
 
@@ -55,7 +60,7 @@ public class Controller {
         ui.udskrivFormandMenu();
         String choice = sc.nextLine();
         switch (choice) {
-            //case "1" -> medlemsliste();
+            case "1" -> filehandler.readFile();
             case "2" -> tilføjMedlem();
             //case "3" -> fjernMedlem();
             case "0" -> mainMenu();
@@ -70,7 +75,18 @@ public class Controller {
         ui.indtatsAlder();
         int age = sc.nextInt();
         int medlemsNummer = opretMedlemsnummer();
-        træner.tilføjMedlem(name,age,medlemsNummer);
+        filehandler.saveRecords(name,age);
+        System.out.println("""
+                tilføj medlem
+                ---------
+                1) motionist
+                2) konkurrence
+                """);
+        int type = sc.nextInt();
+        switch (type){
+            case 1 -> træner.tilføjMedlem(name,age,medlemsNummer);
+            case 2 -> træner.tilføjKonkurrence(name,age,medlemsNummer);
+            default -> ui.invalidInput();
         }
 
     public int opretMedlemsnummer() {
