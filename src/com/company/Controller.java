@@ -75,7 +75,7 @@ public class Controller {
         String name = sc.nextLine();
         ui.indtatsAlder();
         int age = sc.nextInt();
-        int medlemsNummer = opretMedlemsnummer();
+        int medlemsNummer = opretMedlemsnummer(træner.senesteMedlemsnummer());
         ui.tilføjMedlem();
         int type = sc.nextInt();
         switch (type) {
@@ -86,13 +86,16 @@ public class Controller {
 
     }
 
-        public int opretMedlemsnummer () {
+        public int opretMedlemsnummer (int senesteMedlemsnummer) {
             int år = date.getYear();
-                år = (år - 100) * 1000;
-            //int senesteMedlemsnummer = træner.senesteMedlemsnummer;
-            int senesteMedlemsnummer = 1;
-            senesteMedlemsnummer++;
-            return år + senesteMedlemsnummer;
+            år = (år - 100) * 1000;
+            if (senesteMedlemsnummer-år < 0) {
+                senesteMedlemsnummer = senesteMedlemsnummer - (år - 1000);
+            } else {
+                senesteMedlemsnummer = senesteMedlemsnummer - år;
+            };
+            int nytMedlemsnummer = senesteMedlemsnummer++;
+            return år + nytMedlemsnummer;
         }
     }
 

@@ -23,6 +23,10 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
 
     }
 
+    public int senesteMedlemsnummer() {
+        return svømmers.get(svømmers.size() - 1).medlemsNummer;
+    }
+
 
     public void tilføjKonkurrence(String name, int age, int medlemsNummer){
         if(age<18){
