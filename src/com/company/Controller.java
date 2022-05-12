@@ -85,11 +85,7 @@ public class Controller {
 
         public int opretMedlemsnummer () {
             int år = date.getYear();
-            if (år < 200) {
                 år = (år - 100) * 1000;
-            } else {
-                år = (år - 200) * 1000;
-            }
             //int senesteMedlemsnummer = træner.senesteMedlemsnummer;
             int senesteMedlemsnummer = 1;
             senesteMedlemsnummer++;
