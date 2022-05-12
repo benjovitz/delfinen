@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
@@ -14,7 +15,8 @@ public class Controller {
     Date date = new Date();
 
 
-    public void mainMenu() {
+    public void mainMenu() throws FileNotFoundException {
+        træner.tilføj(filehandler.loadRecords());
         ui.udskrivMainMenu();
         String choice = sc.nextLine();
         boolean kørProgram = true;
@@ -29,7 +31,7 @@ public class Controller {
         }
     }
 
-    public void trænerMenu() {
+    public void trænerMenu() throws FileNotFoundException {
         ui.udskrivTrænerMenu();
         String choice = sc.nextLine();
         switch (choice) {
@@ -42,7 +44,7 @@ public class Controller {
         }
     }
 
-    public void kassérMenu() {
+    public void kassérMenu() throws FileNotFoundException {
         ui.udskrivKassérMenu();
         String choice = sc.nextLine();
         switch (choice) {
@@ -54,13 +56,14 @@ public class Controller {
     }
 
 
-    public void formandMenu() {
+    public void formandMenu() throws FileNotFoundException {
         ui.udskrivFormandMenu();
         String choice = sc.nextLine();
         switch (choice) {
             case "1" -> filehandler.readFile();
             case "2" -> tilføjMedlem();
-            //case "3" -> fjernMedlem();
+            //case "3" -> fjernMedlem();'
+            case "4"-> filehandler.saveRecords(træner.getArray());
             case "0" -> mainMenu();
             default -> ui.invalidInput();
 
@@ -73,7 +76,6 @@ public class Controller {
         ui.indtatsAlder();
         int age = sc.nextInt();
         int medlemsNummer = opretMedlemsnummer();
-        filehandler.saveRecords(name, age);
         ui.tilføjMedlem();
         int type = sc.nextInt();
         switch (type) {
@@ -81,6 +83,8 @@ public class Controller {
             case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
             default -> ui.invalidInput();
         }
+        String choice = sc.nextLine();
+
     }
 
         public int opretMedlemsnummer () {

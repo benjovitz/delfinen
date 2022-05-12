@@ -7,13 +7,28 @@ public abstract class Svømmer {
     protected int kontingent;
     protected boolean erAktiv = true;
 
-    public Svømmer(String name,int age, int medlemsNummer, int kontingent) {
+    public Svømmer(String name,int age, int medlemsNummer) {
         this.name=name;
         this.age=age;
         this.medlemsNummer=medlemsNummer;
-        this.kontingent=kontingent;
     }
     public String toString(){
+        return name+" "+age+" "+medlemsNummer+" "+kontingent;
+    }
+
+    public String getName() {
         return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getMedlemsNummer() {
+        return medlemsNummer;
+    }
+
+    public int getKontingent() {
+        return kontingent;
     }
 }

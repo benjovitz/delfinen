@@ -3,16 +3,16 @@ package com.company;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Filehandler {
 
-    private String name;
-    private int age;
     private int memNr =  20220;
+    private PrintStream out;
 
-    private String path = "/Users/oscarstorm/IdeaProjects/delfinen/src/memberFile.csv";
-
-    BufferedReader br;
+    private BufferedReader br;
     private String line = "";
 
     public void readFile() {
@@ -33,22 +33,38 @@ public class Filehandler {
         }
     }
 
-    public void saveRecords(String name, int age){
-
-
-        try(PrintStream save = new PrintStream(new File("memberFile.csv")))
-        {
-        String navn = name;
-        int alder = age;
-        int medlemsnummer = memNr;
-        String csvString = navn + ";" + alder + ";" + medlemsnummer;
-        save.println(csvString);
-        System.out.println("finished writing file");
+    public void saveRecords(ArrayList<Svømmer> svømmers) throws FileNotFoundException {
+        out=new PrintStream(new File("memberFile.csv"));
+        for (Svømmer svømmer:svømmers) {
+            String navn = svømmer.getName();
+            int alder = svømmer.getAge();
+            int medlemsnummer = svømmer.getMedlemsNummer();
+            String csvString = navn + ";" + alder + ";" + medlemsnummer;
+            out.println(csvString);
+            System.out.println("finished writing file");
         }
-        catch (FileNotFoundException e)
-        {
-
+    }
+    public Svømmer loadRecords() throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File("memberFile.csv"));
+        while (fileScanner.hasNext()) {
+            String fileLine = fileScanner.nextLine();
+            Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
+            String name = input.next();
+            int age = input.nextInt();
+            int medlemNR = input.nextInt();
+            //int kontingent = input.nextInt();
+            if (age < 18) {
+                Junior junior = new Junior(name, age, medlemNR);
+                return junior;
+            } else if (age >= 18 || age > 60) {
+                Senior senior = new Senior(name, age, medlemNR);
+                return senior;
+            } else {
+                Pensionist pensionist = new Pensionist(name, age, medlemNR);
+                return pensionist;
+            }
         }
+        return null;
 
     }
 

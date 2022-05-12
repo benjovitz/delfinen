@@ -11,13 +11,13 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
 
     public void tilføjMedlem(String name,int age,int medlemsNummer) {
         if(age<18){
-            Junior junior = new Junior(name,age,medlemsNummer,1000);
+            Junior junior = new Junior(name,age,medlemsNummer);
             svømmers.add(junior);
         } else if (age>=18||age>60){
-            Senior senior = new Senior(name,age,medlemsNummer,1600);
+            Senior senior = new Senior(name,age,medlemsNummer);
             svømmers.add(senior);
         } else{
-            Pensionist pensionist = new Pensionist(name,age,medlemsNummer,1200);
+            Pensionist pensionist = new Pensionist(name,age,medlemsNummer);
             svømmers.add(pensionist);
         }
 
@@ -26,11 +26,11 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
 
     public void tilføjKonkurrence(String name, int age, int medlemsNummer){
         if(age<18){
-            JuniorKonkurrence juniorKonkurrence = new JuniorKonkurrence(name,age,medlemsNummer,1000,null);
+            JuniorKonkurrence juniorKonkurrence = new JuniorKonkurrence(name,age,medlemsNummer,null);
             svømmers.add(juniorKonkurrence);
             konkurrences.add(juniorKonkurrence);
         } else{
-            SeniorKonkurrence seniorKonkurrence = new SeniorKonkurrence(name,age,medlemsNummer,1600,null);
+            SeniorKonkurrence seniorKonkurrence = new SeniorKonkurrence(name,age,medlemsNummer,null);
             svømmers.add(seniorKonkurrence);
             konkurrences.add(seniorKonkurrence);
         }
@@ -41,8 +41,13 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
         System.out.println(svømmers);
 
     }
+    public ArrayList<Svømmer> getArray(){
+        return svømmers;
+    }
 
-
+public void tilføj(Svømmer svømmer){
+        svømmers.add(svømmer);
+}
 
 
 }
