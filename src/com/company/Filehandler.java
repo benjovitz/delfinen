@@ -44,8 +44,9 @@ public class Filehandler {
             System.out.println("finished writing file");
         }
     }
-    public Svømmer loadRecords() throws FileNotFoundException {
+    public ArrayList<Svømmer> loadRecords() throws FileNotFoundException {
         Scanner fileScanner = new Scanner(new File("memberFile.csv"));
+        ArrayList<Svømmer> svømmers = new ArrayList<>();
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
             Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
@@ -55,16 +56,16 @@ public class Filehandler {
             //int kontingent = input.nextInt();
             if (age < 18) {
                 Junior junior = new Junior(name, age, medlemNR);
-                return junior;
+                svømmers.add(junior);
             } else if (age >= 18 || age > 60) {
                 Senior senior = new Senior(name, age, medlemNR);
-                return senior;
+                svømmers.add(senior);
             } else {
                 Pensionist pensionist = new Pensionist(name, age, medlemNR);
-                return pensionist;
+                svømmers.add(pensionist);
             }
         }
-        return null;
+        return svømmers;
 
     }
 

@@ -3,9 +3,9 @@ package com.company;
 public abstract class Svømmer {
     protected String name;
     protected int  age;
-    protected int medlemsNummer;
+    private int medlemsNummer;
     protected int kontingent;
-    protected boolean erAktiv = true;
+    private boolean erAktiv = true;
 
     public Svømmer(String name,int age, int medlemsNummer) {
         this.name=name;
@@ -31,4 +31,9 @@ public abstract class Svømmer {
     public int getKontingent() {
         return kontingent;
     }
+
+    public int getMedlemsnummer(){
+        return medlemsNummer;
+    }
+
 }

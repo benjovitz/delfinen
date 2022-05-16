@@ -24,7 +24,7 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
     }
 
     public int senesteMedlemsnummer() {
-        return svømmers.get(svømmers.size() - 1).medlemsNummer;
+        return svømmers.get(svømmers.size()-1).getMedlemsnummer();
     }
 
 
@@ -49,7 +49,11 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
         return svømmers;
     }
 
-public void tilføj(Svømmer svømmer){
+    public void setSvømmers(ArrayList<Svømmer> svømmers) {
+        this.svømmers = svømmers;
+    }
+
+    public void tilføj(Svømmer svømmer){
         svømmers.add(svømmer);
 }
 

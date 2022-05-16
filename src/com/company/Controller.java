@@ -14,9 +14,9 @@ public class Controller {
     private UI ui = new UI();
     private Date date = new Date();
 
-
+//FEJL I LOOP!
     public void mainMenu() throws FileNotFoundException {
-        træner.tilføj(filehandler.loadRecords());
+        træner.setSvømmers(filehandler.loadRecords());
         ui.udskrivMainMenu();
         String choice = sc.nextLine();
         boolean kørProgram = true;
@@ -83,18 +83,19 @@ public class Controller {
             case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
             default -> ui.invalidInput();
         }
-
     }
 
         public int opretMedlemsnummer (int senesteMedlemsnummer) {
             int år = date.getYear();
             år = (år - 100) * 1000;
+            int nytMedlemsnummer;
             if (senesteMedlemsnummer-år < 0) {
-                senesteMedlemsnummer = senesteMedlemsnummer - (år - 1000);
+                nytMedlemsnummer = senesteMedlemsnummer - (år - 1000);
             } else {
-                senesteMedlemsnummer = senesteMedlemsnummer - år;
+                nytMedlemsnummer = senesteMedlemsnummer - år;
             };
-            int nytMedlemsnummer = senesteMedlemsnummer++;
+            nytMedlemsnummer++;
+            System.out.println(nytMedlemsnummer + år);
             return år + nytMedlemsnummer;
         }
     }
