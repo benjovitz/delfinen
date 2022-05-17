@@ -56,4 +56,16 @@ Date date = new Date();
         }
         return alder;
     }
+
+    public int udregnkontingent(int alder) {
+        int kontingent = 0;
+        if (alder < 18) {
+            kontingent = 1000;
+        } else if (alder >= 60) {
+            kontingent = 1200;
+        } else {
+            kontingent = 1600;
+        }
+        return kontingent;
+    }
 }
