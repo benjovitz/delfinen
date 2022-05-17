@@ -14,7 +14,7 @@ Date date = new Date();
 
 
     public void tilføjMedlem(String name,int år,int måned,int dag,int medlemsNummer) {
-       Motionist motionist = new Motionist(name,år,måned,dag,medlemsNummer);
+       Motionist motionist = new Motionist(name,år,måned,dag,medlemsNummer );
        svømmers.add(motionist);
     }
 
@@ -27,8 +27,8 @@ Date date = new Date();
     }
 
 
-    public void tilføjKonkurrence(String name, int år,int måned,int dag, int medlemsNummer){
-        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,null);
+    public void tilføjKonkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin){
+        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,disciplin,null);
         svømmers.add(konkurrence);
     }
 

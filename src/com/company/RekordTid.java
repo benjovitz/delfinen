@@ -1,16 +1,19 @@
 package com.company;
 
 public class RekordTid {
-    private int time;
-    private int date;
-    private String disciplin;
+    private double time;
+    private String dato;
     private String stævne;
+    private int placering;
 
-    public RekordTid(int time, int date, String disciplin, String stævne){
+    public RekordTid(int time, int placering, String stævne){
         this.time=time;
-        this.date=date;
-        this.disciplin=disciplin;
+        this.placering=placering;
         this.stævne=stævne;
+    }
+    public RekordTid(double time,String dato){
+        this.time=time;
+        this.dato=dato;
     }
 
 }

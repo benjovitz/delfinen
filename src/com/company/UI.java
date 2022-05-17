@@ -59,4 +59,12 @@ public class UI {
             2) konkurrence
             """);
   }
+
+  public void vælgDisciplin() {
+    System.out.println("Vælg disciplin");
+    System.out.println("1. Butterfly");
+    System.out.println("2. Fri");
+    System.out.println("3. Bryst");
+    System.out.println("4. Ryg");
+  }
 }
