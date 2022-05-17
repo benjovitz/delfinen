@@ -46,13 +46,13 @@ Date date = new Date();
     public int udregnAlder(int fødselsår, int fødselsmåned, int fødselsdag) {
         int alder = 0;
         if (fødselsmåned < date.getMonth() + 1) {
-            alder = date.getYear() + 1900 - fødselsdag - 1;
+            alder = date.getYear() + 1900 - fødselsår;
         } else if (fødselsmåned == date.getMonth()+1) {
-            if (fødselsdag < date.getDate()) {
-                alder = date.getYear() + 1900 - fødselsdag -1;
+            if (fødselsdag <= date.getDate()) {
+                alder = date.getYear() + 1900 - fødselsår;
             }
         } else {
-            alder = date.getYear() + 1900 - fødselsdag;
+            alder = date.getYear() + 1900 - fødselsår - 1;
         }
         return alder;
     }
