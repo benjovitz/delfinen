@@ -9,15 +9,15 @@ private ArrayList<Svømmer> svømmers = new ArrayList<>();
 private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
 
 
-    public void tilføjMedlem(String name,int age,int medlemsNummer) {
+    public void tilføjMedlem(String name,int år,int måned,int dag,int medlemsNummer) {
         if(age<18){
-            Junior junior = new Junior(name,age,medlemsNummer);
+            Junior junior = new Junior(name,år,måned,dag,medlemsNummer);
             svømmers.add(junior);
         } else if (age>=18||age>60){
-            Senior senior = new Senior(name,age,medlemsNummer);
+            Senior senior = new Senior(name,år,måned,dag,medlemsNummer);
             svømmers.add(senior);
         } else{
-            Pensionist pensionist = new Pensionist(name,age,medlemsNummer);
+            Pensionist pensionist = new Pensionist(name,år,måned,dag,medlemsNummer);
             svømmers.add(pensionist);
         }
 
@@ -56,6 +56,7 @@ private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
     public void tilføj(Svømmer svømmer){
         svømmers.add(svømmer);
 }
+
 
 
 }

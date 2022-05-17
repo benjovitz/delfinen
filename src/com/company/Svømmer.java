@@ -2,26 +2,26 @@ package com.company;
 
 public abstract class Svømmer {
     protected String name;
-    protected int  age;
+    protected int år;
+    protected int måned;
+    protected int dag;
     private int medlemsNummer;
     protected int kontingent;
     private boolean erAktiv = true;
 
-    public Svømmer(String name,int age, int medlemsNummer) {
+    public Svømmer(String name,int år,int måned,int dag, int medlemsNummer) {
         this.name=name;
-        this.age=age;
+        this.år=år;
+        this.måned=måned;
+        this.dag=dag;
         this.medlemsNummer=medlemsNummer;
     }
     public String toString(){
-        return name+" "+age+" "+medlemsNummer+" "+kontingent;
+        return name+" "+år+" "+måned+" "+dag+" "+medlemsNummer+" "+kontingent;
     }
 
     public String getName() {
         return name;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public int getMedlemsNummer() {

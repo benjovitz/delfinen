@@ -37,8 +37,14 @@ public class UI {
     System.out.println("Indtast navn: ");
   }
 
-  public void indtatsAlder() {
-    System.out.println("Indtast alder: ");
+  public void indtatsÅr() {
+    System.out.println("Indtast fødselsår: ");
+  }
+  public void indtastMåned(){
+    System.out.println("Indtast fødselsmåned: ");
+  }
+  public void indtastDag(){
+    System.out.println("Indtast fødselsdag: ");
   }
 
   public void invalidInput() {

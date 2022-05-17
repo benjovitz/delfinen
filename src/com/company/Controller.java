@@ -85,14 +85,18 @@ public class Controller {
   public void tilføjMedlem() {
     ui.indtastNavn();
     String name = sc.nextLine();
-    ui.indtatsAlder();
-    int age = sc.nextInt();
+    ui.indtatsÅr();
+    int år = sc.nextInt();
+    ui.indtastMåned();
+    int måned = sc.nextInt();
+    ui.indtastDag();
+    int dag = sc.nextInt();
     int medlemsNummer = opretMedlemsnummer(træner.senesteMedlemsnummer());
     ui.tilføjMedlem();
     int type = sc.nextInt();
     String scannerBug = sc.nextLine();
     switch (type) {
-      case 1 -> træner.tilføjMedlem(name, age, medlemsNummer);
+      case 1 -> træner.tilføjMedlem(name,år,måned,dag, medlemsNummer);
       case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
       default -> ui.invalidInput();
     }
