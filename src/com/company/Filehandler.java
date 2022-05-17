@@ -36,9 +36,11 @@ public class Filehandler {
         out=new PrintStream(new File("memberFile.csv"));
         for (Svømmer svømmer:svømmers) {
             String navn = svømmer.getName();
-            int alder = svømmer.getAge();
+            int år = svømmer.getÅr();
+            int måned = svømmer.getMåned();
+            int dag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsNummer();
-            String csvString = navn + ";" + alder + ";" + medlemsnummer;
+            String csvString = navn + ";" +år+";" + måned +";"+ dag + ";" + medlemsnummer;
             out.println(csvString);
             System.out.println("finished writing file");
         }
@@ -49,8 +51,10 @@ public class Filehandler {
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
             Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
-            String name = input.next();
-            int age = input.nextInt();
+            String navn = input.next();
+            int år = input.nextInt();
+            int måned = input.nextInt();
+            int dag = input.nextInt();
             int medlemNR = input.nextInt();
             Motionist motionist = new Motionist(navn,år,måned,dag,medlemNR);
             svømmers.add(motionist);
