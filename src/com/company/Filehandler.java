@@ -52,20 +52,13 @@ public class Filehandler {
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
             Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
-            String name = input.next();
-            int age = input.nextInt();
+            String navn = input.next();
+            int år = input.nextInt();
+            int måned = input.nextInt();
+            int dag = input.nextInt();
             int medlemNR = input.nextInt();
-            //int kontingent = input.nextInt();
-            if (age < 18) {
-                Junior junior = new Junior(name, age, medlemNR);
-                svømmers.add(junior);
-            } else if (age >= 18 || age > 60) {
-                Senior senior = new Senior(name, age, medlemNR);
-                svømmers.add(senior);
-            } else {
-                Pensionist pensionist = new Pensionist(name, age, medlemNR);
-                svømmers.add(pensionist);
-            }
+            Motionist motionist = new Motionist(navn,år,måned,dag,medlemNR);
+            svømmers.add(motionist);
         }
         return svømmers;
 
