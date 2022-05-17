@@ -18,4 +18,8 @@ public class Konkurrence extends Svømmer {
     public void setDisciplin(Disciplin disciplin) {
         this.disciplin = disciplin;
     }
+
+    public RekordTid getRekordTid() {
+        return rekordTid;
+    }
 }

@@ -39,7 +39,7 @@ public class Filehandler {
             int år = svømmer.getÅr();
             int måned = svømmer.getMåned();
             int dag = svømmer.getDag();
-            int medlemsnummer = svømmer.getMedlemsNummer();
+            int medlemsnummer = svømmer.getMedlemsnummer();
             String csvString = navn + ";" +år+";" + måned +";"+ dag + ";" + medlemsnummer;
             out.println(csvString);
             System.out.println("finished writing file");

@@ -15,5 +15,7 @@ public class RekordTid {
         this.time=time;
         this.dato=dato;
     }
-
+    public String toString(){
+        return time+" "+dato;
+    }
 }

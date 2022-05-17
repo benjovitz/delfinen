@@ -67,4 +67,16 @@ public class UI {
     System.out.println("3. Bryst");
     System.out.println("4. Ryg");
   }
+
+  public void indtastTid() {
+    System.out.println("Indtast tid: ");
+  }
+
+  public void indtastDato() {
+    System.out.println("Indtast dato: ");
+  }
+
+  public void indtastMedlemsNummer() {
+    System.out.println("Indtast medlemsnummer: ");
+  }
 }

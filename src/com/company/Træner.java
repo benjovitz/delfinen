@@ -85,4 +85,7 @@ Date date = new Date();
         RekordTid rekordTid = new RekordTid(tid,dato);
         konkurrence.setRekordTid(rekordTid);
     }
+    public void seRekord(Konkurrence svømmer){
+        System.out.println(svømmer.getRekordTid());
+    }
 }
