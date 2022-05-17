@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Filehandler {
 
-    private int memNr =  20220;
     private PrintStream out;
 
     private BufferedReader br;
@@ -37,11 +36,9 @@ public class Filehandler {
         out=new PrintStream(new File("memberFile.csv"));
         for (Svømmer svømmer:svømmers) {
             String navn = svømmer.getName();
-            int fødselsår = svømmer.getÅr();
-            int fødselsmåned = svømmer.getMåned();
-            int fødselsdag = svømmer.getDag();
+            int alder = svømmer.getAge();
             int medlemsnummer = svømmer.getMedlemsNummer();
-            String csvString = navn + ";" + fødselsår + ";" + fødselsmåned +","+fødselsdag+";"+ medlemsnummer;
+            String csvString = navn + ";" + alder + ";" + medlemsnummer;
             out.println(csvString);
             System.out.println("finished writing file");
         }
@@ -52,10 +49,8 @@ public class Filehandler {
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
             Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
-            String navn = input.next();
-            int år = input.nextInt();
-            int måned = input.nextInt();
-            int dag = input.nextInt();
+            String name = input.next();
+            int age = input.nextInt();
             int medlemNR = input.nextInt();
             Motionist motionist = new Motionist(navn,år,måned,dag,medlemNR);
             svømmers.add(motionist);
