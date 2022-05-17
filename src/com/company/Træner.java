@@ -10,6 +10,7 @@ public class Træner {
 private String name;
 private ArrayList<Svømmer> svømmers = new ArrayList<>();
 private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
+Date date = new Date();
 
 
     public void tilføjMedlem(String name,int år,int måned,int dag,int medlemsNummer) {
