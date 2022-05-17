@@ -1,6 +1,6 @@
 package com.company;
 
-public abstract class Konkurrence extends Svømmer {
+public class Konkurrence extends Svømmer {
 
     private RekordTid rekordTid;
 

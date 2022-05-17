@@ -97,7 +97,7 @@ public class Controller {
     String scannerBug = sc.nextLine();
     switch (type) {
       case 1 -> træner.tilføjMedlem(name,år,måned,dag, medlemsNummer);
-      case 2 -> træner.tilføjKonkurrence(name, age, medlemsNummer);
+      case 2 -> træner.tilføjKonkurrence(name,år,måned,dag, medlemsNummer);
       default -> ui.invalidInput();
     }
   }
