@@ -19,7 +19,11 @@ Date date = new Date();
     }
 
     public int senesteMedlemsnummer() {
-        return svømmers.get(svømmers.size()-1).getMedlemsnummer();
+        if(svømmers.size()==0){
+            return 0;
+        } else {
+            return svømmers.get(svømmers.size() - 1).getMedlemsnummer();
+        }
     }
 
 
