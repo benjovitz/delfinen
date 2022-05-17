@@ -37,9 +37,11 @@ public class Filehandler {
         out=new PrintStream(new File("memberFile.csv"));
         for (Svømmer svømmer:svømmers) {
             String navn = svømmer.getName();
-            int alder = svømmer.getAge();
+            int fødselsår = svømmer.getÅr();
+            int fødselsmåned = svømmer.getMåned();
+            int fødselsdag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsNummer();
-            String csvString = navn + ";" + alder + ";" + medlemsnummer;
+            String csvString = navn + ";" + fødselsår + ";" + fødselsmåned +","+fødselsdag+";"+ medlemsnummer;
             out.println(csvString);
             System.out.println("finished writing file");
         }

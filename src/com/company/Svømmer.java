@@ -35,5 +35,16 @@ public abstract class Svømmer {
     public int getMedlemsnummer(){
         return medlemsNummer;
     }
+    public int getÅr(){
+        return år;
+    }
+
+    public int getMåned(){
+        return måned;
+    }
+
+    public int getDag(){
+        return dag;
+    }
 
 }
