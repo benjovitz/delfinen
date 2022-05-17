@@ -24,10 +24,6 @@ public abstract class Svømmer {
         return name;
     }
 
-    public int getMedlemsNummer() {
-        return medlemsNummer;
-    }
-
     public int getKontingent() {
         return kontingent;
     }

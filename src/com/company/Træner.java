@@ -72,4 +72,13 @@ Date date = new Date();
         }
         return kontingent;
     }
+
+    public Svømmer findSvømmer(int medlemsnummer) {
+        for (Svømmer svømmer:svømmers) {
+            if (svømmer.getMedlemsnummer() == medlemsnummer) {
+                return svømmer;
+            }
+        }
+        return null;
+    }
 }
