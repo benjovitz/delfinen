@@ -10,4 +10,16 @@ public class Konkurrence extends Svømmer {
         this.disciplin=disciplin;
         this.rekordTid=rekordTid;
     }
+
+    public void setRekordTid(RekordTid rekordTid) {
+        this.rekordTid = rekordTid;
+    }
+
+    public void setDisciplin(Disciplin disciplin) {
+        this.disciplin = disciplin;
+    }
+
+    public RekordTid getRekordTid() {
+        return rekordTid;
+    }
 }

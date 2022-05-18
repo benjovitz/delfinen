@@ -42,12 +42,32 @@ public class Controller {
             ui.udskrivTrænerMenu();
             String choice = sc.nextLine();
             switch (choice) {
-                //case "1" -> seRekorder();
+                case "1" -> seRekorder();
                 case "2" -> filehandler.readFile();
-                //case "3" -> opretRekord();
+                case "3" -> opretRekord();
                 case "0" -> trænerBoo = false;
                 default -> ui.invalidInput();
             }
+        }
+    }
+
+    private void seRekorder() {
+        Konkurrence konkurrence = (Konkurrence) træner.findSvømmer(22223);
+        træner.seRekord(konkurrence);
+
+    }
+
+    private void opretRekord() {
+        ui.indtastMedlemsNummer();
+        int medlem= sc.nextInt();
+        Konkurrence svømmer =(Konkurrence)træner.findSvømmer(medlem);
+        if(svømmer!=null){
+            ui.indtastTid();
+            double tid = sc.nextInt();
+            String scannerbug = sc.nextLine();
+            ui.indtastDato();
+            String dato = sc.nextLine();
+            træner.nyRekord(svømmer,tid,dato);
         }
     }
 

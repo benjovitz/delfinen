@@ -81,4 +81,11 @@ Date date = new Date();
         }
         return null;
     }
+    public void nyRekord(Konkurrence konkurrence,double tid,String dato){
+        RekordTid rekordTid = new RekordTid(tid,dato);
+        konkurrence.setRekordTid(rekordTid);
+    }
+    public void seRekord(Konkurrence svømmer){
+        System.out.println(svømmer.getRekordTid());
+    }
 }
