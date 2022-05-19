@@ -1,7 +1,7 @@
 package com.company;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -13,6 +13,7 @@ public class Controller {
     private Træner træner = new Træner();
     private UI ui = new UI();
     private Date date = new Date();
+    private NumberFormat fmt = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
 
     boolean programKører = true;
 
@@ -77,11 +78,25 @@ public class Controller {
             String choice = sc.nextLine();
             switch (choice) {
                 //case "1"-> restance();
-                //case "2" -> indkomst();
+                case "2" -> indkomst();
                 case "0" -> kassérBoo = false;
                 default -> ui.invalidInput();
             }
         }
+    }
+
+    private void indkomst() {
+        int samletIndkomst=0;
+        for (Svømmer svømmer: træner.getArray()) {
+            int år = svømmer.getÅr();
+            int måned = svømmer.getMåned();
+            int dag = svømmer.getDag();
+            boolean erAktiv = svømmer.getErAktiv();
+            int alder = træner.udregnAlder(år,måned,dag);
+            samletIndkomst +=træner.udregnkontingent(alder,erAktiv);
+
+        }
+        System.out.println(fmt.format(samletIndkomst));
     }
 
 
@@ -93,11 +108,18 @@ public class Controller {
             switch (choice) {
                 case "1" -> filehandler.readFile();
                 case "2" -> tilføjMedlem();
-                //case "3" -> fjernMedlem();'
+                case "3" -> fjernMedlem();
                 case "0" -> formandBoo = false;
                 default -> ui.invalidInput();
             }
         }
+    }
+
+    private void fjernMedlem() {
+        ui.indtastMedlemsNummer();
+        int medlemsNummer= sc.nextInt();
+        Svømmer svømmer = træner.findSvømmer(medlemsNummer);
+        træner.fjernMedlem(svømmer);
     }
 
     public void tilføjMedlem() throws FileNotFoundException {

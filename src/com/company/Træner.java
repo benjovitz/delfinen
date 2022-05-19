@@ -64,15 +64,17 @@ private Date date = new Date();
     }
 
     public int udregnkontingent(int alder,boolean erAktiv) {
-        int kontingent = 0;
-        if (alder < 18) {
-            kontingent = 1000;
-        } else if (alder >= 60) {
-            kontingent = 1200;
-        } else {
-            kontingent = 1600;
+        if(erAktiv==false){
+            return 500;
+        }else {
+            if (alder < 18) {
+               return 1000;
+            } else if (alder >= 60) {
+                return  1200;
+            } else {
+                return  1600;
+            }
         }
-        return kontingent;
     }
 
     public Svømmer findSvømmer(int medlemsnummer) {
@@ -89,5 +91,9 @@ private Date date = new Date();
     }
     public void seRekord(Konkurrence svømmer){
         System.out.println(svømmer.getRekordTid());
+    }
+
+    public void fjernMedlem(Svømmer svømmer) {
+        svømmers.remove(svømmer);
     }
 }
