@@ -28,7 +28,8 @@ Date date = new Date();
 
 
     public void tilføjKonkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin){
-        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,disciplin,null);
+        RekordTid rekordTid = new RekordTid(0,"N/A");
+        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,disciplin,rekordTid);
         svømmers.add(konkurrence);
     }
 

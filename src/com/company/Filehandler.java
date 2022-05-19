@@ -43,13 +43,17 @@ public class Filehandler {
             if (svømmer instanceof Konkurrence) {
                 Disciplin disciplin = ((Konkurrence) svømmer).getDisciplin();
                 RekordTid rekordTid = ((Konkurrence) svømmer).getRekordTid();
-                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+rekordTid;
+                double tid = rekordTid.getTime();
+                String dato = rekordTid.getDato();
+                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato;
                 out.println(csvString);
+            }else {
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
+                out.println(csvString);
+
             }
-            csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
-            out.println(csvString);
-            System.out.println("finished writing file");
         }
+        System.out.println("finished writing file");
     }
 
     public ArrayList<Svømmer> loadRecords() throws FileNotFoundException {
