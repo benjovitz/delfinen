@@ -10,11 +10,11 @@ public class Træner {
 private String name;
 private ArrayList<Svømmer> svømmers = new ArrayList<>();
 private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
-Date date = new Date();
+private Date date = new Date();
 
 
     public void tilføjMedlem(String name,int år,int måned,int dag,int medlemsNummer) {
-       Motionist motionist = new Motionist(name,år,måned,dag,medlemsNummer );
+       Motionist motionist = new Motionist(name,år,måned,dag,medlemsNummer,true);
        svømmers.add(motionist);
     }
 
@@ -29,7 +29,7 @@ Date date = new Date();
 
     public void tilføjKonkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin){
         RekordTid rekordTid = new RekordTid(0,"N/A");
-        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,disciplin,rekordTid);
+        Konkurrence konkurrence = new Konkurrence(name,år,måned,dag,medlemsNummer,true,disciplin,rekordTid);
         konkurrence.setTræner("N/A");
         svømmers.add(konkurrence);
     }
@@ -63,7 +63,7 @@ Date date = new Date();
         return alder;
     }
 
-    public int udregnkontingent(int alder) {
+    public int udregnkontingent(int alder,boolean erAktiv) {
         int kontingent = 0;
         if (alder < 18) {
             kontingent = 1000;
