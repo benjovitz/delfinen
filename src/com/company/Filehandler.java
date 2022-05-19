@@ -45,7 +45,8 @@ public class Filehandler {
                 RekordTid rekordTid = ((Konkurrence) svømmer).getRekordTid();
                 double tid = rekordTid.getTime();
                 String dato = rekordTid.getDato();
-                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato;
+                String træner = ((Konkurrence) svømmer).getTræner();
+                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato+";"+træner;
                 out.println(csvString);
             }else {
                 csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
@@ -73,7 +74,9 @@ public class Filehandler {
                 double tid = input.nextDouble();
                 String dato = input.nextLine();
                 RekordTid rekordTid = new RekordTid(tid, dato);
+                String træner =input.nextLine();
                 Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, disciplin, rekordTid);
+                konkurrence.setTræner(træner);
                 svømmers.add(konkurrence);
             } else {
                 Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR);
