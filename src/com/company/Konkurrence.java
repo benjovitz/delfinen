@@ -22,4 +22,8 @@ public class Konkurrence extends Svømmer {
     public RekordTid getRekordTid() {
         return rekordTid;
     }
+
+    public Disciplin getDisciplin() {
+        return disciplin;
+    }
 }
