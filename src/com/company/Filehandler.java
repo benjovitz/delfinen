@@ -1,7 +1,6 @@
 package com.company;
 
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -33,34 +32,44 @@ public class Filehandler {
     }
 
     public void saveRecords(ArrayList<Svømmer> svømmers) throws FileNotFoundException {
-        out=new PrintStream(new File("memberFile.csv"));
-        for (Svømmer svømmer:svømmers) {
+        out = new PrintStream(new File("memberFile.csv"));
+        for (Svømmer svømmer : svømmers) {
             String navn = svømmer.getName();
             int år = svømmer.getÅr();
             int måned = svømmer.getMåned();
             int dag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsnummer();
-            String csvString = navn + ";" +år+";" + måned +";"+ dag + ";" + medlemsnummer;
+            String csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
             out.println(csvString);
             System.out.println("finished writing file");
         }
     }
+
     public ArrayList<Svømmer> loadRecords() throws FileNotFoundException {
         Scanner fileScanner = new Scanner(new File("memberFile.csv"));
         ArrayList<Svømmer> svømmers = new ArrayList<>();
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
+            String[] value = fileLine.split(";");
             Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
             String navn = input.next();
             int år = input.nextInt();
             int måned = input.nextInt();
             int dag = input.nextInt();
             int medlemNR = input.nextInt();
-            Motionist motionist = new Motionist(navn,år,måned,dag,medlemNR);
-            svømmers.add(motionist);
+            if (value.length > 5) {
+                Disciplin disciplin = Disciplin.valueOf(input.next());
+                double tid = input.nextDouble();
+                String dato = input.nextLine();
+                RekordTid rekordTid = new RekordTid(tid, dato);
+                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, disciplin, rekordTid);
+                svømmers.add(konkurrence);
+            } else {
+                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR);
+                svømmers.add(motionist);
+            }
         }
         return svømmers;
-
     }
 
 
