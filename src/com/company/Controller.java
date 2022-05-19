@@ -54,16 +54,15 @@ public class Controller {
     private void seRekorder() {
         Konkurrence konkurrence = (Konkurrence) træner.findSvømmer(22223);
         træner.seRekord(konkurrence);
-
     }
 
     private void opretRekord() {
         ui.indtastMedlemsNummer();
-        int medlem= sc.nextInt();
-        Konkurrence svømmer =(Konkurrence)træner.findSvømmer(medlem);
-        if(svømmer!=null){
+        int medlem = readInteger();
+        Konkurrence svømmer = (Konkurrence)træner.findSvømmer(medlem);
+        if(svømmer!= null){
             ui.indtastTid();
-            double tid = sc.nextInt();
+            double tid = readDouble();
             String scannerbug = sc.nextLine();
             ui.indtastDato();
             String dato = sc.nextLine();
@@ -106,14 +105,14 @@ public class Controller {
         ui.indtastNavn();
         String name = sc.nextLine();
         ui.indtatsÅr();
-        int år = sc.nextInt();
+        int år = readInteger();
         ui.indtastMåned();
-        int måned = sc.nextInt();
+        int måned = readInteger();
         ui.indtastDag();
-        int dag = sc.nextInt();
+        int dag = readInteger();
         int medlemsNummer = opretMedlemsnummer(træner.senesteMedlemsnummer());
         ui.tilføjMedlem();
-        int type = sc.nextInt();
+        int type = readInteger();
         String scannerBug = sc.nextLine();
         switch (type) {
             case 1 -> træner.tilføjMedlem(name, år, måned, dag, medlemsNummer);
@@ -159,6 +158,22 @@ public class Controller {
         ;
         nytMedlemsnummer++;
         return år + nytMedlemsnummer;
+    }
+
+    public int readInteger() {
+        while (!sc.hasNextInt()) {
+            String text = sc.next();
+            ui.invalidInput();
+        }
+        return sc.nextInt();
+    }
+
+    public double readDouble() {
+        while (!sc.hasNextDouble()) {
+            String text = sc.next();
+            ui.invalidInput();
+        }
+        return sc.nextDouble();
     }
 }
 
