@@ -18,4 +18,12 @@ public class RekordTid {
     public String toString(){
         return time+" "+dato;
     }
+
+    public double getTime() {
+        return time;
+    }
+
+    public String getDato() {
+        return dato;
+    }
 }

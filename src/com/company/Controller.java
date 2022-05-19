@@ -94,14 +94,13 @@ public class Controller {
                 case "1" -> filehandler.readFile();
                 case "2" -> tilføjMedlem();
                 //case "3" -> fjernMedlem();'
-                case "4" -> filehandler.saveRecords(træner.getArray());
                 case "0" -> formandBoo = false;
                 default -> ui.invalidInput();
             }
         }
     }
 
-    public void tilføjMedlem() {
+    public void tilføjMedlem() throws FileNotFoundException {
         ui.indtastNavn();
         String name = sc.nextLine();
         ui.indtatsÅr();
@@ -123,6 +122,7 @@ public class Controller {
 
             default -> ui.invalidInput();
         }
+        filehandler.saveRecords(træner.getArray());
     }
 
     private Disciplin vælgDisciplin() {

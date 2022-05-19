@@ -1,9 +1,12 @@
 package com.company;
 
+import java.io.PrintStream;
+
 public class Konkurrence extends Svømmer {
 
     private RekordTid rekordTid;
     private Disciplin disciplin;
+    private String træner;
 
     public Konkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin, RekordTid rekordTid) {
         super(name,år,måned,dag, medlemsNummer);
@@ -21,5 +24,17 @@ public class Konkurrence extends Svømmer {
 
     public RekordTid getRekordTid() {
         return rekordTid;
+    }
+
+    public Disciplin getDisciplin() {
+        return disciplin;
+    }
+
+    public void setTræner(String træner) {
+        this.træner = træner;
+    }
+
+    public String getTræner() {
+        return træner;
     }
 }
