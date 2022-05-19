@@ -54,7 +54,6 @@ public class Controller {
     private void seRekorder() {
         Konkurrence konkurrence = (Konkurrence) træner.findSvømmer(22223);
         træner.seRekord(konkurrence);
-
     }
 
     private void opretRekord() {
