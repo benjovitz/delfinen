@@ -14,7 +14,9 @@ public class UI {
     System.out.printf("Indtast valg: \n" +
         "1. Rekorder \n" +
         "2. Liste over svømmere \n" +
-        "3. Opret ny rekord \n" +
+        "3. Opret ny træningsrekord \n" +
+        "4. Tilføj konkrruencetid \n" +
+        "5. Se konkurrenceresultater \n" +
         "0. Main menu \n");
   }
 
@@ -78,5 +80,13 @@ public class UI {
 
   public void indtastMedlemsNummer() {
     System.out.println("Indtast medlemsnummer: ");
+  }
+
+  public void indtastPlacering() {
+    System.out.println("Indtast placering: ");
+  }
+
+  public void indtastStævne() {
+    System.out.println("Indtast stævne: ");
   }
 }

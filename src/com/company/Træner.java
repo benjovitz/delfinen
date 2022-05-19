@@ -10,6 +10,7 @@ public class Træner {
 private String name;
 private ArrayList<Svømmer> svømmers = new ArrayList<>();
 private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
+private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
 Date date = new Date();
 
 
@@ -89,5 +90,13 @@ Date date = new Date();
     }
     public void seRekord(Konkurrence svømmer){
         System.out.println(svømmer.getRekordTid());
+    }
+
+    public void tilføjKonkurrencetid(double time, int placering, String stævne, int medlemsnummer) {
+        konkurrenceTider.add(new RekordTid(time, placering, stævne, medlemsnummer));
+    }
+
+    public ArrayList<RekordTid> getKonkurrenceTider() {
+        return konkurrenceTider;
     }
 }

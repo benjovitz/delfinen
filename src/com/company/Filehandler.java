@@ -33,16 +33,28 @@ public class Filehandler {
 
     public void saveRecords(ArrayList<Svømmer> svømmers) throws FileNotFoundException {
         out = new PrintStream(new File("memberFile.csv"));
+        String csvString;
         for (Svømmer svømmer : svømmers) {
             String navn = svømmer.getName();
             int år = svømmer.getÅr();
             int måned = svømmer.getMåned();
             int dag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsnummer();
-            String csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
-            out.println(csvString);
-            System.out.println("finished writing file");
+            if (svømmer instanceof Konkurrence) {
+                Disciplin disciplin = ((Konkurrence) svømmer).getDisciplin();
+                RekordTid rekordTid = ((Konkurrence) svømmer).getRekordTid();
+                double tid = rekordTid.getTime();
+                String dato = rekordTid.getDato();
+                String træner = ((Konkurrence) svømmer).getTræner();
+                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato+";"+træner;
+                out.println(csvString);
+            }else {
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
+                out.println(csvString);
+
+            }
         }
+        System.out.println("finished writing file");
     }
 
     public ArrayList<Svømmer> loadRecords() throws FileNotFoundException {
@@ -62,7 +74,9 @@ public class Filehandler {
                 double tid = input.nextDouble();
                 String dato = input.nextLine();
                 RekordTid rekordTid = new RekordTid(tid, dato);
+                String træner =input.nextLine();
                 Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, disciplin, rekordTid);
+                konkurrence.setTræner(træner);
                 svømmers.add(konkurrence);
             } else {
                 Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR);

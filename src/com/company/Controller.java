@@ -45,6 +45,8 @@ public class Controller {
                 case "1" -> seRekorder();
                 case "2" -> filehandler.readFile();
                 case "3" -> opretRekord();
+                case "4" -> opretKonkurrencetid();
+                case "5" -> System.out.println(træner.getKonkurrenceTider());
                 case "0" -> trænerBoo = false;
                 default -> ui.invalidInput();
             }
@@ -174,6 +176,20 @@ public class Controller {
             ui.invalidInput();
         }
         return sc.nextDouble();
+    }
+
+    public void opretKonkurrencetid() {
+        ui.indtastTid();
+        double tid = readDouble();
+        ui.indtastPlacering();
+        int placering = readInteger();
+        ui.indtastStævne();
+        String stævne = sc.nextLine();
+        stævne = sc.nextLine();
+        ui.indtastMedlemsNummer();
+        int medlemsnummer = readInteger();
+        træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer);
+        sc.nextLine();
     }
 }
 
