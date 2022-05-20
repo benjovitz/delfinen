@@ -18,6 +18,7 @@ public class Controller {
 
     public void program() throws FileNotFoundException {
         træner.setSvømmers(filehandler.loadRecords());
+        træner.setKonkurrenceTider(filehandler.loadKonkurrenctider());
 
         while (programKører) {
             ui.udskrivMainMenu();
@@ -178,7 +179,7 @@ public class Controller {
         return sc.nextDouble();
     }
 
-    public void opretKonkurrencetid() {
+    public void opretKonkurrencetid() throws FileNotFoundException {
         ui.indtastTid();
         double tid = readDouble();
         ui.indtastPlacering();
@@ -190,6 +191,7 @@ public class Controller {
         int medlemsnummer = readInteger();
         træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer);
         sc.nextLine();
+        filehandler.saveKonkurrencetider(træner.getKonkurrenceTider());
     }
 }
 

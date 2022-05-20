@@ -34,4 +34,16 @@ public class RekordTid {
     public String getDato() {
         return dato;
     }
+
+    public int getMedlemsnummer() {
+        return medlemsnummer;
+    }
+
+    public int getPlacering() {
+        return placering;
+    }
+
+    public String getStævne() {
+        return stævne;
+    }
 }

@@ -99,4 +99,9 @@ Date date = new Date();
     public ArrayList<RekordTid> getKonkurrenceTider() {
         return konkurrenceTider;
     }
+
+    public void setKonkurrenceTider(ArrayList<RekordTid> konkurrenceTider) {
+        this.konkurrenceTider = konkurrenceTider;
+    }
+
 }

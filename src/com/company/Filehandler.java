@@ -86,5 +86,35 @@ public class Filehandler {
         return svømmers;
     }
 
+    public void saveKonkurrencetider(ArrayList<RekordTid> konkurrencetider) throws FileNotFoundException {
+        out = new PrintStream(new File("konkurrencetider.csv"));
+        String csvString;
+        for (RekordTid rekordTid : konkurrencetider) {
+            double tid = rekordTid.getTime();
+            int placering = rekordTid.getPlacering();
+            String stævne = rekordTid.getStævne();
+            int medlemsnummer = rekordTid.getMedlemsnummer();
+            csvString = tid + ";" + placering + ";" + stævne + ";" + medlemsnummer;
+            out.println(csvString);
+        }
+    }
+
+    public ArrayList<RekordTid> loadKonkurrenctider() throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File("konkurrencetider.csv"));
+        ArrayList<RekordTid> konkurrencetider = new ArrayList<>();
+        while (fileScanner.hasNext()) {
+            String fileLine = fileScanner.nextLine();
+            Scanner input = new Scanner(fileLine).useDelimiter(";").useLocale(Locale.ENGLISH);
+            double tid = input.nextDouble();
+            int placering = input.nextInt();
+            String stævne = input.next();
+            int medlemsnummer = input.nextInt();
+
+            RekordTid rekordTid = new RekordTid(tid, placering, stævne, medlemsnummer);
+            konkurrencetider.add(rekordTid);
+        }
+        return konkurrencetider;
+    }
+
 
 }
