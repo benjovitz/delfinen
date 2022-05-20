@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.FileNotFoundException;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
@@ -124,6 +125,7 @@ public class Controller {
         Svømmer svømmer = træner.findSvømmer(medlemsNummer);
         træner.fjernMedlem(svømmer);
         filehandler.saveRecords(træner.getArray());
+    }
 
     public void tilføjMedlem() throws FileNotFoundException {
         ui.indtastNavn();
@@ -216,6 +218,7 @@ public class Controller {
         filehandler.saveKonkurrencetider(træner.getKonkurrenceTider());
     }
 }
+
 
 
 

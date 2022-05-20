@@ -32,6 +32,7 @@ public class Filehandler {
 
     public void saveRecords(ArrayList<Svømmer> svømmers) throws FileNotFoundException {
         out = new PrintStream(new File("memberFile.csv"));
+        String csvString;
         for (Svømmer svømmer : svømmers) {
             String navn = svømmer.getName();
             int år = svømmer.getÅr();
@@ -44,12 +45,11 @@ public class Filehandler {
                 double tid = rekordTid.getTime();
                 String dato = rekordTid.getDato();
                 String træner = ((Konkurrence) svømmer).getTræner();
-                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato+";"+træner;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato+";"+træner;
                 out.println(csvString);
             }else {
                 csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
                 out.println(csvString);
-
             }
         }
         System.out.println("finished writing file");
