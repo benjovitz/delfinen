@@ -61,7 +61,7 @@ public class Controller {
         træner.seRekord(konkurrence);
     }
 
-    private void opretRekord() {
+    private void opretRekord() throws FileNotFoundException {
         ui.indtastMedlemsNummer();
         int medlem = readInteger();
         Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
@@ -73,6 +73,7 @@ public class Controller {
             String dato = sc.nextLine();
             træner.nyRekord(svømmer, tid, dato);
         }
+        filehandler.saveRecords(træner.getArray());
     }
 
     public void kassérMenu() throws FileNotFoundException {
