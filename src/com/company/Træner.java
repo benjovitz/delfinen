@@ -113,4 +113,7 @@ Date date = new Date();
     public void fjernMedlem(Svømmer svømmer) {
         svømmers.remove(svømmer);
     }
+
+
+
 }

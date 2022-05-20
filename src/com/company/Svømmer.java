@@ -53,4 +53,11 @@ public abstract class Svømmer {
     public boolean getErAktiv() {
         return erAktiv;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
 }

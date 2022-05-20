@@ -114,6 +114,7 @@ public class Controller {
                 case "1" -> filehandler.readFile();
                 case "2" -> tilføjMedlem();
                 case "3" -> fjernMedlem();
+                case "4" -> redigerMedlem();
                 case "0" -> formandBoo = false;
                 default -> ui.invalidInput();
             }
@@ -218,6 +219,20 @@ public class Controller {
         træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer);
         sc.nextLine();
         filehandler.saveKonkurrencetider(træner.getKonkurrenceTider());
+    }
+
+    public void redigerMedlem() throws FileNotFoundException {
+        ui.indtastMedlemsNummer();
+        int medlem = readInteger();
+        Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
+        String scannerBug = sc.nextLine();
+        if (svømmer != null) {
+            System.out.println("indtast navn");
+            String name = sc.nextLine();
+            svømmer.setName(name);
+        }
+        filehandler.saveRecords(træner.getArray());
+
     }
 }
 

@@ -32,6 +32,7 @@ public class UI {
                 "1. Medlemsliste \n" +
                 "2. Opret nyt medlem \n" +
                 "3. Fjern medlem \n" +
+                "4. rediger medlem \n" +
                 "0. Main menu \n");
     }
 
