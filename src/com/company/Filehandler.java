@@ -46,10 +46,10 @@ public class Filehandler {
                 double tid = rekordTid.getTime();
                 String dato = rekordTid.getDato();
                 String træner = ((Konkurrence) svømmer).getTræner();
-                csvString =navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+erAktiv+";"+disciplin+";"+tid+";"+dato+";"+træner;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer + ";" + erAktiv + ";" + disciplin + ";" + tid + ";" + dato + ";" + træner;
                 out.println(csvString);
-            }else {
-                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+erAktiv;
+            } else {
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer + ";" + erAktiv;
                 out.println(csvString);
 
             }
@@ -70,23 +70,24 @@ public class Filehandler {
             int dag = input.nextInt();
             int medlemNR = input.nextInt();
             boolean erAktiv;
-            if(fileLine.contains("true")){
-                erAktiv=true;
-            }else{
-                erAktiv=false;
+            if (fileLine.contains("true")) {
+                erAktiv = true;
+            } else {
+                erAktiv = false;
             }
             if (value.length > 6) {
-                String scannerStop=input.next();
+                //scanner true eller false linjen så den ikke stopper med at indlæse eller indlæser forkert
+                String scannerStop = input.next();
                 Disciplin disciplin = Disciplin.valueOf(input.next());
                 double tid = input.nextDouble();
                 String dato = input.next();
                 RekordTid rekordTid = new RekordTid(tid, dato);
-                String træner =input.next();
-                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR,erAktiv, disciplin, rekordTid);
+                String træner = input.next();
+                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, erAktiv, disciplin, rekordTid);
                 konkurrence.setTræner(træner);
                 svømmers.add(konkurrence);
             } else {
-                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR,erAktiv);
+                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR, erAktiv);
                 svømmers.add(motionist);
             }
         }

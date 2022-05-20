@@ -60,14 +60,14 @@ public class Controller {
     private void opretRekord() {
         ui.indtastMedlemsNummer();
         int medlem = readInteger();
-        Konkurrence svømmer = (Konkurrence)træner.findSvømmer(medlem);
-        if(svømmer!= null){
+        Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
+        if (svømmer != null) {
             ui.indtastTid();
             double tid = readDouble();
             String scannerbug = sc.nextLine();
             ui.indtastDato();
             String dato = sc.nextLine();
-            træner.nyRekord(svømmer,tid,dato);
+            træner.nyRekord(svømmer, tid, dato);
         }
     }
 
@@ -86,14 +86,14 @@ public class Controller {
     }
 
     private void indkomst() {
-        int samletIndkomst=0;
-        for (Svømmer svømmer: træner.getArray()) {
+        int samletIndkomst = 0;
+        for (Svømmer svømmer : træner.getArray()) {
             int år = svømmer.getÅr();
             int måned = svømmer.getMåned();
             int dag = svømmer.getDag();
             boolean erAktiv = svømmer.getErAktiv();
-            int alder = træner.udregnAlder(år,måned,dag);
-            samletIndkomst +=træner.udregnkontingent(alder,erAktiv);
+            int alder = træner.udregnAlder(år, måned, dag);
+            samletIndkomst += træner.udregnkontingent(alder, erAktiv);
 
         }
         System.out.println(fmt.format(samletIndkomst));
@@ -115,11 +115,12 @@ public class Controller {
         }
     }
 
-    private void fjernMedlem() {
+    private void fjernMedlem() throws FileNotFoundException {
         ui.indtastMedlemsNummer();
-        int medlemsNummer= sc.nextInt();
+        int medlemsNummer = sc.nextInt();
         Svømmer svømmer = træner.findSvømmer(medlemsNummer);
         træner.fjernMedlem(svømmer);
+        filehandler.saveRecords(træner.getArray());
     }
 
     public void tilføjMedlem() throws FileNotFoundException {
@@ -138,8 +139,8 @@ public class Controller {
         switch (type) {
             case 1 -> træner.tilføjMedlem(name, år, måned, dag, medlemsNummer);
             case 2 -> {
-                Disciplin disciplin =vælgDisciplin();
-                træner.tilføjKonkurrence(name,år,måned,dag,medlemsNummer,disciplin);
+                Disciplin disciplin = vælgDisciplin();
+                træner.tilføjKonkurrence(name, år, måned, dag, medlemsNummer, disciplin);
             }
 
             default -> ui.invalidInput();
