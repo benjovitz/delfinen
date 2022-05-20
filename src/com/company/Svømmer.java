@@ -9,15 +9,17 @@ public abstract class Svømmer {
     protected int kontingent;
     private boolean erAktiv = true;
 
-    public Svømmer(String name,int år,int måned,int dag, int medlemsNummer) {
-        this.name=name;
-        this.år=år;
-        this.måned=måned;
-        this.dag=dag;
-        this.medlemsNummer=medlemsNummer;
+    public Svømmer(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv) {
+        this.name = name;
+        this.år = år;
+        this.måned = måned;
+        this.dag = dag;
+        this.medlemsNummer = medlemsNummer;
+        this.erAktiv = erAktiv;
     }
-    public String toString(){
-        return name+" "+år+" "+måned+" "+dag+" "+medlemsNummer+" "+kontingent;
+
+    public String toString() {
+        return name + " " + år + " " + måned + " " + dag + " " + medlemsNummer + " " + erAktiv + " " + kontingent;
     }
 
     public String getName() {
@@ -28,19 +30,27 @@ public abstract class Svømmer {
         return kontingent;
     }
 
-    public int getMedlemsnummer(){
+    public int getMedlemsnummer() {
         return medlemsNummer;
     }
-    public int getÅr(){
+
+    public int getÅr() {
         return år;
     }
 
-    public int getMåned(){
+    public int getMåned() {
         return måned;
     }
 
-    public int getDag(){
+    public int getDag() {
         return dag;
     }
 
+    public void setErAktiv(boolean erAktiv) {
+        this.erAktiv = erAktiv;
+    }
+
+    public boolean getErAktiv() {
+        return erAktiv;
+    }
 }

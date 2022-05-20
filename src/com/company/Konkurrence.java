@@ -8,10 +8,10 @@ public class Konkurrence extends Svømmer {
     private Disciplin disciplin;
     private String træner;
 
-    public Konkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin, RekordTid rekordTid) {
-        super(name,år,måned,dag, medlemsNummer);
-        this.disciplin=disciplin;
-        this.rekordTid=rekordTid;
+    public Konkurrence(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv, Disciplin disciplin, RekordTid rekordTid) {
+        super(name, år, måned, dag, medlemsNummer, erAktiv);
+        this.disciplin = disciplin;
+        this.rekordTid = rekordTid;
     }
 
     public void setRekordTid(RekordTid rekordTid) {

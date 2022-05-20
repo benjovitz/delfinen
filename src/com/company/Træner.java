@@ -14,13 +14,13 @@ private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
 Date date = new Date();
 
 
-    public void tilføjMedlem(String name,int år,int måned,int dag,int medlemsNummer) {
-       Motionist motionist = new Motionist(name,år,måned,dag,medlemsNummer );
-       svømmers.add(motionist);
+    public void tilføjMedlem(String name, int år, int måned, int dag, int medlemsNummer) {
+        Motionist motionist = new Motionist(name, år, måned, dag, medlemsNummer, true);
+        svømmers.add(motionist);
     }
 
     public int senesteMedlemsnummer() {
-        if(svømmers.size()==0){
+        if (svømmers.size() == 0) {
             return 0;
         } else {
             return svømmers.get(svømmers.size() - 1).getMedlemsnummer();
@@ -35,10 +35,11 @@ Date date = new Date();
         svømmers.add(konkurrence);
     }
 
-    public void viewArray(){
+    public void viewArray() {
         System.out.println(svømmers);
     }
-    public ArrayList<Svømmer> getArray(){
+
+    public ArrayList<Svømmer> getArray() {
         return svømmers;
     }
 
@@ -54,7 +55,7 @@ Date date = new Date();
         int alder = 0;
         if (fødselsmåned < date.getMonth() + 1) {
             alder = date.getYear() + 1900 - fødselsår;
-        } else if (fødselsmåned == date.getMonth()+1) {
+        } else if (fødselsmåned == date.getMonth() + 1) {
             if (fødselsdag <= date.getDate()) {
                 alder = date.getYear() + 1900 - fødselsår;
             }
@@ -64,31 +65,35 @@ Date date = new Date();
         return alder;
     }
 
-    public int udregnkontingent(int alder) {
-        int kontingent = 0;
-        if (alder < 18) {
-            kontingent = 1000;
-        } else if (alder >= 60) {
-            kontingent = 1200;
+    public int udregnkontingent(int alder, boolean erAktiv) {
+        if (erAktiv == false) {
+            return 500;
         } else {
-            kontingent = 1600;
+            if (alder < 18) {
+                return 1000;
+            } else if (alder >= 60) {
+                return 1200;
+            } else {
+                return 1600;
+            }
         }
-        return kontingent;
     }
 
     public Svømmer findSvømmer(int medlemsnummer) {
-        for (Svømmer svømmer:svømmers) {
+        for (Svømmer svømmer : svømmers) {
             if (svømmer.getMedlemsnummer() == medlemsnummer) {
                 return svømmer;
             }
         }
         return null;
     }
-    public void nyRekord(Konkurrence konkurrence,double tid,String dato){
-        RekordTid rekordTid = new RekordTid(tid,dato);
+
+    public void nyRekord(Konkurrence konkurrence, double tid, String dato) {
+        RekordTid rekordTid = new RekordTid(tid, dato);
         konkurrence.setRekordTid(rekordTid);
     }
-    public void seRekord(Konkurrence svømmer){
+
+    public void seRekord(Konkurrence svømmer) {
         System.out.println(svømmer.getRekordTid());
     }
 
@@ -104,4 +109,8 @@ Date date = new Date();
         this.konkurrenceTider = konkurrenceTider;
     }
 
+
+    public void fjernMedlem(Svømmer svømmer) {
+        svømmers.remove(svømmer);
+    }
 }

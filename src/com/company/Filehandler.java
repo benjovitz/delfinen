@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Filehandler {
 
     private PrintStream out;
-
     private BufferedReader br;
     private String line = "";
 
@@ -33,7 +32,6 @@ public class Filehandler {
 
     public void saveRecords(ArrayList<Svømmer> svømmers) throws FileNotFoundException {
         out = new PrintStream(new File("memberFile.csv"));
-        String csvString;
         for (Svømmer svømmer : svømmers) {
             String navn = svømmer.getName();
             int år = svømmer.getÅr();
@@ -69,17 +67,25 @@ public class Filehandler {
             int måned = input.nextInt();
             int dag = input.nextInt();
             int medlemNR = input.nextInt();
-            if (value.length > 5) {
+            boolean erAktiv;
+            if (fileLine.contains("true")) {
+                erAktiv = true;
+            } else {
+                erAktiv = false;
+            }
+            if (value.length > 6) {
+                //scanner true eller false linjen så den ikke stopper med at indlæse eller indlæser forkert
+                String scannerStop = input.next();
                 Disciplin disciplin = Disciplin.valueOf(input.next());
                 double tid = input.nextDouble();
-                String dato = input.nextLine();
+                String dato = input.next();
                 RekordTid rekordTid = new RekordTid(tid, dato);
-                String træner =input.nextLine();
-                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, disciplin, rekordTid);
+                String træner = input.next();
+                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, erAktiv, disciplin, rekordTid);
                 konkurrence.setTræner(træner);
                 svømmers.add(konkurrence);
             } else {
-                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR);
+                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR, erAktiv);
                 svømmers.add(motionist);
             }
         }
