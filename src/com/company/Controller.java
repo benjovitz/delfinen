@@ -227,7 +227,7 @@ public class Controller {
         Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
         String scannerBug = sc.nextLine();
         if (svømmer != null) {
-            System.out.println("indtast navn");
+            ui.indtastNavn();
             String name = sc.nextLine();
             svømmer.setName(name);
         }
