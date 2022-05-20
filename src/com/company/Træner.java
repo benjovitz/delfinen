@@ -66,7 +66,7 @@ Date date = new Date();
     }
 
     public int udregnkontingent(int alder, boolean erAktiv) {
-        if (erAktiv == false) {
+        if (!erAktiv) {
             return 500;
         } else {
             if (alder < 18) {
