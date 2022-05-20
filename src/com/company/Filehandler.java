@@ -39,16 +39,17 @@ public class Filehandler {
             int måned = svømmer.getMåned();
             int dag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsnummer();
+            boolean erAktiv = svømmer.getErAktiv();
             if (svømmer instanceof Konkurrence) {
                 Disciplin disciplin = ((Konkurrence) svømmer).getDisciplin();
                 RekordTid rekordTid = ((Konkurrence) svømmer).getRekordTid();
                 double tid = rekordTid.getTime();
                 String dato = rekordTid.getDato();
                 String træner = ((Konkurrence) svømmer).getTræner();
-                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";"+disciplin+";"+tid+";"+dato+";"+træner;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";" + erAktiv + ";" + disciplin+";"+tid+";"+dato+";"+træner;
                 out.println(csvString);
             }else {
-                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer + ";" + erAktiv;
                 out.println(csvString);
             }
         }

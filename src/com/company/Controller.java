@@ -177,12 +177,13 @@ public class Controller {
         int år = date.getYear();
         år = (år - 100) * 1000;
         int nytMedlemsnummer;
-        if (senesteMedlemsnummer - år < 0) {
+        if (senesteMedlemsnummer == 0) {
+            nytMedlemsnummer = 0;
+        } else if (senesteMedlemsnummer - år < 0) {
             nytMedlemsnummer = senesteMedlemsnummer - (år - 1000);
         } else {
             nytMedlemsnummer = senesteMedlemsnummer - år;
         }
-        ;
         nytMedlemsnummer++;
         return år + nytMedlemsnummer;
     }
