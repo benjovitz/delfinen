@@ -131,17 +131,6 @@ public class Træner {
         }
         System.out.println(tmp);
 
-        /*ArrayList<RekordTid> tmp = new ArrayList<>();
-        for (Konkurrence konkurrence : konkurrences) {
-            int medlem = konkurrence.getMedlemsnummer();
-            for (RekordTid rekordTid : konkurrenceTider) {
-                if (medlem == rekordTid.getMedlemsnummer()) {
-                    tmp.add(rekordTid);
-                }
-            }
-        }
-        System.out.println(tmp);
-    }*/
     }
 }
 
