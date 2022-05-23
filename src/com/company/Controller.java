@@ -239,7 +239,7 @@ public class Controller {
     public void redigerMedlem() throws FileNotFoundException {
         ui.indtastMedlemsNummer();
         int medlem = readInteger();
-        Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
+        Svømmer svømmer = træner.findSvømmer(medlem);
         String scannerBug = sc.nextLine();
         if (svømmer != null) {
             ui.indtastNavn();
