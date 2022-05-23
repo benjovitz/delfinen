@@ -1,17 +1,15 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 import java.time.LocalDate;
 
 public class Træner {
 
-private String name;
-private ArrayList<Svømmer> svømmers = new ArrayList<>();
-private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
-private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
-Date date = new Date();
+    private String name;
+    private ArrayList<Svømmer> svømmers = new ArrayList<>();
+    private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
+    private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
+    private Date date = new Date();
 
 
     public void tilføjMedlem(String name, int år, int måned, int dag, int medlemsNummer) {
@@ -28,8 +26,8 @@ Date date = new Date();
     }
 
 
-    public void tilføjKonkurrence(String name, int år,int måned,int dag, int medlemsNummer,Disciplin disciplin){
-        RekordTid rekordTid = new RekordTid(0,"N/A");
+    public void tilføjKonkurrence(String name, int år, int måned, int dag, int medlemsNummer, Disciplin disciplin) {
+        RekordTid rekordTid = new RekordTid(0, "N/A");
         Konkurrence konkurrence = new Konkurrence(name, år, måned, dag, medlemsNummer, true, disciplin, rekordTid);
         konkurrence.setTræner("N/A");
         svømmers.add(konkurrence);
@@ -97,8 +95,8 @@ Date date = new Date();
         System.out.println(svømmer.getRekordTid());
     }
 
-    public void tilføjKonkurrencetid(double time, int placering, String stævne, int medlemsnummer) {
-        konkurrenceTider.add(new RekordTid(time, placering, stævne, medlemsnummer));
+    public void tilføjKonkurrencetid(double time, int placering, String stævne, int medlemsnummer, Disciplin disciplin) {
+        konkurrenceTider.add(new RekordTid(time, placering, stævne, medlemsnummer, disciplin));
     }
 
     public ArrayList<RekordTid> getKonkurrenceTider() {
@@ -115,5 +113,35 @@ Date date = new Date();
     }
 
 
+    public ArrayList<Konkurrence> getKonkurrences() {
+        return konkurrences;
+    }
 
+    public void findRekorder() {
+        ArrayList<RekordTid> tmp = konkurrenceTider;
+        tmp.sort(RekordTid::compareTo);
+        System.out.println(tmp);
+        for (int i = 0; i < tmp.size(); i++) {
+            int medlem = tmp.get(i).getMedlemsnummer();
+            for (int j = tmp.size()-1; j > i; j--) {
+                if(medlem==tmp.get(j).getMedlemsnummer()){
+                    tmp.remove(tmp.get(j));
+                }
+            }
+        }
+        System.out.println(tmp);
+
+        /*ArrayList<RekordTid> tmp = new ArrayList<>();
+        for (Konkurrence konkurrence : konkurrences) {
+            int medlem = konkurrence.getMedlemsnummer();
+            for (RekordTid rekordTid : konkurrenceTider) {
+                if (medlem == rekordTid.getMedlemsnummer()) {
+                    tmp.add(rekordTid);
+                }
+            }
+        }
+        System.out.println(tmp);
+    }*/
+    }
 }
+

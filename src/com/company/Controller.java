@@ -14,7 +14,7 @@ public class Controller {
     private Træner træner = new Træner();
     private UI ui = new UI();
     private Date date = new Date();
-    private NumberFormat fmt = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
+    private NumberFormat fmt = NumberFormat.getCurrencyInstance(Locale.getDefault());
 
     boolean programKører = true;
 
@@ -57,8 +57,9 @@ public class Controller {
     }
 
     private void seRekorder() {
-        Konkurrence konkurrence = (Konkurrence) træner.findSvømmer(22223);
-        træner.seRekord(konkurrence);
+        //Disciplin tmp = vælgDisciplin();
+        træner.findRekorder();
+
     }
 
     private void opretRekord() throws FileNotFoundException {
@@ -90,7 +91,7 @@ public class Controller {
         }
     }
 
-    private void indkomst() {
+    public void indkomst() {
         int samletIndkomst = 0;
         for (Svømmer svømmer : træner.getArray()) {
             int år = svømmer.getÅr();
@@ -103,7 +104,19 @@ public class Controller {
         }
         System.out.println(fmt.format(samletIndkomst));
     }
+    public int indkomst2() {
+        int samletIndkomst = 0;
+        for (Svømmer svømmer : træner.getArray()) {
+            int år = svømmer.getÅr();
+            int måned = svømmer.getMåned();
+            int dag = svømmer.getDag();
+            boolean erAktiv = svømmer.getErAktiv();
+            int alder = træner.udregnAlder(år, måned, dag);
+            samletIndkomst += træner.udregnkontingent(alder, erAktiv);
 
+        }
+        return samletIndkomst;
+    }
 
     public void formandMenu() throws FileNotFoundException {
         boolean formandBoo = true;
@@ -216,7 +229,9 @@ public class Controller {
         stævne = sc.nextLine();
         ui.indtastMedlemsNummer();
         int medlemsnummer = readInteger();
-        træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer);
+        Konkurrence konkurrence = (Konkurrence)træner.findSvømmer(medlemsnummer);
+        Disciplin disciplin = konkurrence.getDisciplin();
+        træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer,disciplin);
         sc.nextLine();
         filehandler.saveKonkurrencetider(træner.getKonkurrenceTider());
     }

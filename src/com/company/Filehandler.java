@@ -101,7 +101,8 @@ public class Filehandler {
             int placering = rekordTid.getPlacering();
             String stævne = rekordTid.getStævne();
             int medlemsnummer = rekordTid.getMedlemsnummer();
-            csvString = tid + ";" + placering + ";" + stævne + ";" + medlemsnummer;
+            Disciplin disciplin = rekordTid.getDisciplin();
+            csvString = tid + ";" + placering + ";" + stævne + ";" + medlemsnummer+";"+disciplin;
             out.println(csvString);
         }
     }
@@ -116,8 +117,8 @@ public class Filehandler {
             int placering = input.nextInt();
             String stævne = input.next();
             int medlemsnummer = input.nextInt();
-
-            RekordTid rekordTid = new RekordTid(tid, placering, stævne, medlemsnummer);
+            Disciplin disciplin = Disciplin.valueOf(input.next());
+            RekordTid rekordTid = new RekordTid(tid, placering, stævne, medlemsnummer,disciplin);
             konkurrencetider.add(rekordTid);
         }
         return konkurrencetider;

@@ -92,4 +92,8 @@ public class UI {
   public void indtastStævne() {
     System.out.println("Indtast stævne: ");
   }
+
+    public void indtastDisciplin() {
+        System.out.println("Indtast disciplin");
+    }
 }

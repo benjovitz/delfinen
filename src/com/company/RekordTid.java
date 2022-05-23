@@ -1,17 +1,19 @@
 package com.company;
 
-public class RekordTid {
+public class RekordTid implements Comparable<RekordTid>{
     private double time;
     private String dato;
     private String stævne;
     private int placering;
     private int medlemsnummer;
+    private Disciplin disciplin;
 
-    public RekordTid(double time, int placering, String stævne, int medlemsnummer){
+    public RekordTid(double time, int placering, String stævne, int medlemsnummer,Disciplin disciplin){
         this.time = time;
         this.placering = placering;
         this.stævne = stævne;
         this.medlemsnummer = medlemsnummer;
+        this.disciplin=disciplin;
     }
 
     public RekordTid(double time, String dato){
@@ -21,7 +23,7 @@ public class RekordTid {
 
     public String toString(){
         if (dato == null){
-            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer + '\n';
+            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer +" " +disciplin+"\n";
         } else {
             return time + " " + dato + '\n';
         }
@@ -45,5 +47,28 @@ public class RekordTid {
 
     public String getStævne() {
         return stævne;
+    }
+
+    public Disciplin getDisciplin() {
+        return disciplin;
+    }
+
+
+    @Override
+    public int compareTo(RekordTid rekordTid) {
+        boolean tid = sorter(rekordTid);
+        if(tid){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    public boolean sorter(RekordTid rekordTid){
+    if(rekordTid.getTime()<this.time){
+        return true;
+    }else {
+        return false;
+    }
+
     }
 }
