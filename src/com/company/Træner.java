@@ -131,6 +131,7 @@ public class Træner {
         }
         System.out.println(tmp);
 
+
     }
 }
 
