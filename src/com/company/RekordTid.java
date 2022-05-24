@@ -23,7 +23,7 @@ public class RekordTid implements Comparable<RekordTid>{
 
     public String toString(){
         if (dato == null){
-            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer +" " +disciplin+"\n";
+            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer + " Disciplin: " +disciplin+"\n";
         } else {
             return time + " " + dato + '\n';
         }

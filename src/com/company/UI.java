@@ -53,7 +53,7 @@ public class UI {
     }
 
     public void invalidInput() {
-        System.out.println("Din indtastning matchede ingen muligheder");
+        System.out.println("Ugyldig indtastning \n");
     }
 
     public void tilføjMedlem() {
@@ -78,7 +78,7 @@ public class UI {
     }
 
     public void indtastDato() {
-        System.out.println("Indtast dato: ");
+        System.out.println("Indtast dato (dd-mm-åååå): ");
     }
 
   public void indtastMedlemsNummer() {
@@ -92,8 +92,4 @@ public class UI {
   public void indtastStævne() {
     System.out.println("Indtast stævne: ");
   }
-
-    public void indtastDisciplin() {
-        System.out.println("Indtast disciplin");
-    }
 }

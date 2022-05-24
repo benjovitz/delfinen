@@ -63,15 +63,16 @@ public class Controller {
     }
 
     private void opretRekord() throws FileNotFoundException {
-        ui.indtastMedlemsNummer();
-        int medlem = readInteger();
-        Konkurrence svømmer = (Konkurrence) træner.findSvømmer(medlem);
+        Konkurrence svømmer = findKonkurrencesvømmer();
         if (svømmer != null) {
             ui.indtastTid();
             double tid = readDouble();
             String scannerbug = sc.nextLine();
             ui.indtastDato();
             String dato = sc.nextLine();
+            if (dato.equals("")) {
+                dato = træner.dagsDato();
+            }
             træner.nyRekord(svømmer, tid, dato);
         }
         filehandler.saveRecords(træner.getArray());
@@ -135,11 +136,10 @@ public class Controller {
     }
 
     private void fjernMedlem() throws FileNotFoundException {
-        ui.indtastMedlemsNummer();
-        int medlemsNummer = sc.nextInt();
-        Svømmer svømmer = træner.findSvømmer(medlemsNummer);
+        Svømmer svømmer = findSvømmer();
         træner.fjernMedlem(svømmer);
         filehandler.saveRecords(træner.getArray());
+        String scannerbug = sc.nextLine();
     }
 
     public void tilføjMedlem() throws FileNotFoundException {
@@ -227,9 +227,8 @@ public class Controller {
         ui.indtastStævne();
         String stævne = sc.nextLine();
         stævne = sc.nextLine();
-        ui.indtastMedlemsNummer();
-        int medlemsnummer = readInteger();
-        Konkurrence konkurrence = (Konkurrence)træner.findSvømmer(medlemsnummer);
+        Konkurrence konkurrence = findKonkurrencesvømmer();
+        int medlemsnummer = konkurrence.getMedlemsnummer();
         Disciplin disciplin = konkurrence.getDisciplin();
         træner.tilføjKonkurrencetid(tid, placering, stævne, medlemsnummer,disciplin);
         sc.nextLine();
@@ -237,9 +236,7 @@ public class Controller {
     }
 
     public void redigerMedlem() throws FileNotFoundException {
-        ui.indtastMedlemsNummer();
-        int medlem = readInteger();
-        Svømmer svømmer = træner.findSvømmer(medlem);
+        Svømmer svømmer = findSvømmer();
         String scannerBug = sc.nextLine();
         if (svømmer != null) {
             ui.indtastNavn();
@@ -247,7 +244,30 @@ public class Controller {
             svømmer.setName(name);
         }
         filehandler.saveRecords(træner.getArray());
+    }
 
+    public Konkurrence findKonkurrencesvømmer() {
+        Konkurrence svømmer = null;
+        while (svømmer == null) {
+            ui.indtastMedlemsNummer();
+            int medlem = readInteger();
+            if (træner.findSvømmer(medlem) instanceof Konkurrence) {
+                svømmer = (Konkurrence) træner.findSvømmer(medlem);
+            } else {
+                ui.invalidInput();
+            }
+        }
+        return svømmer;
+    }
+
+    public Svømmer findSvømmer() {
+        Svømmer svømmer = null;
+        while (svømmer == null) {
+            ui.indtastMedlemsNummer();
+            int medlemsNummer = sc.nextInt();
+            svømmer = træner.findSvømmer(medlemsNummer);
+        }
+        return svømmer;
     }
 }
 

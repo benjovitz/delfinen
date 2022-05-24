@@ -19,9 +19,9 @@ public class Filehandler {
 
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(";");
-                    System.out.println("name: " + values[0] + " age: " + values[1] + " membernr: " + values[2]);
-
-                    System.out.println(line);
+                    System.out.printf("%-35s", "Navn: " + values[0]);
+                    System.out.printf("%-20s", "Fødselsår : " + values[1]);
+                    System.out.printf("%-20s %n %n", "Medlemsnummer: " + values[4]);
                 }
 
             } catch (IOException e) {
@@ -53,7 +53,6 @@ public class Filehandler {
                 out.println(csvString);
             }
         }
-        System.out.println("finished writing file");
     }
 
     public ArrayList<Svømmer> loadRecords() throws FileNotFoundException {

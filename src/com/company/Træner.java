@@ -130,8 +130,13 @@ public class Træner {
             }
         }
         System.out.println(tmp);
+    }
 
-
+    public String dagsDato() {
+        int år = date.getYear() + 1900;
+        int måned = date.getMonth() + 1;
+        int dag = date.getDay();
+        return String.valueOf(år) + "-" + String.valueOf(måned) + "-" + String.valueOf(dag);
     }
 }
 
