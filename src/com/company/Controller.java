@@ -129,9 +129,21 @@ public class Controller {
                 case "2" -> tilføjMedlem();
                 case "3" -> fjernMedlem();
                 case "4" -> redigerMedlem();
+                case "5" -> medlemsAktivering();
                 case "0" -> formandBoo = false;
                 default -> ui.invalidInput();
             }
+        }
+    }
+
+    private void medlemsAktivering() {
+        Svømmer tmp = findSvømmer();
+        ui.aktivOrnNot();
+        String choice = sc.nextLine();
+        switch (choice){
+            default -> ui.invalidInput();
+            case "1" -> tmp.setErAktiv(true);
+            case "2" -> tmp.setErAktiv(false);
         }
     }
 

@@ -8,8 +8,8 @@ public class Konkurrence extends Svømmer {
     private Disciplin disciplin;
     private String træner;
 
-    public Konkurrence(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv, Disciplin disciplin, RekordTid rekordTid) {
-        super(name, år, måned, dag, medlemsNummer, erAktiv);
+    public Konkurrence(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv,boolean harBetalt, Disciplin disciplin, RekordTid rekordTid) {
+        super(name, år, måned, dag, medlemsNummer, erAktiv,harBetalt);
         this.disciplin = disciplin;
         this.rekordTid = rekordTid;
     }

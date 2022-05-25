@@ -8,14 +8,16 @@ public abstract class Svømmer {
     private int medlemsNummer;
     protected int kontingent;
     private boolean erAktiv = true;
+    private boolean harBetalt = true;
 
-    public Svømmer(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv) {
+    public Svømmer(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv,boolean harBetalt) {
         this.name = name;
         this.år = år;
         this.måned = måned;
         this.dag = dag;
         this.medlemsNummer = medlemsNummer;
         this.erAktiv = erAktiv;
+        this.harBetalt=harBetalt;
     }
 
     public String toString() {
@@ -59,5 +61,7 @@ public abstract class Svømmer {
     }
 
 
-
+    public boolean getHarbetalt() {
+        return harBetalt;
+    }
 }

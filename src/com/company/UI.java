@@ -92,4 +92,9 @@ public class UI {
   public void indtastStævne() {
     System.out.println("Indtast stævne: ");
   }
+
+    public void aktivOrnNot() {
+        System.out.println("1. Aktiver medlem");
+        System.out.println("2 . Deaktiver medlem");
+    }
 }

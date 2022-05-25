@@ -40,16 +40,17 @@ public class Filehandler {
             int dag = svømmer.getDag();
             int medlemsnummer = svømmer.getMedlemsnummer();
             boolean erAktiv = svømmer.getErAktiv();
+            boolean harBetalt = svømmer.getHarbetalt();
             if (svømmer instanceof Konkurrence) {
                 Disciplin disciplin = ((Konkurrence) svømmer).getDisciplin();
                 RekordTid rekordTid = ((Konkurrence) svømmer).getRekordTid();
                 double tid = rekordTid.getTime();
                 String dato = rekordTid.getDato();
                 String træner = ((Konkurrence) svømmer).getTræner();
-                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";" + erAktiv + ";" + disciplin+";"+tid+";"+dato+";"+træner;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer+";" + erAktiv + ";"+harBetalt+";" + disciplin+";"+tid+";"+dato+";"+træner;
                 out.println(csvString);
             }else {
-                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer + ";" + erAktiv;
+                csvString = navn + ";" + år + ";" + måned + ";" + dag + ";" + medlemsnummer + ";" + erAktiv+";"+harBetalt;
                 out.println(csvString);
             }
         }
@@ -67,25 +68,19 @@ public class Filehandler {
             int måned = input.nextInt();
             int dag = input.nextInt();
             int medlemNR = input.nextInt();
-            boolean erAktiv;
-            if (fileLine.contains("true")) {
-                erAktiv = true;
-            } else {
-                erAktiv = false;
-            }
-            if (value.length > 6) {
-                //scanner true eller false linjen så den ikke stopper med at indlæse eller indlæser forkert
-                String scannerStop = input.next();
+            boolean erAktiv=input.nextBoolean();
+            boolean harBetalt=input.nextBoolean();
+            if (value.length > 5) {
                 Disciplin disciplin = Disciplin.valueOf(input.next());
                 double tid = input.nextDouble();
                 String dato = input.next();
                 RekordTid rekordTid = new RekordTid(tid, dato);
                 String træner = input.next();
-                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, erAktiv, disciplin, rekordTid);
+                Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, erAktiv,harBetalt, disciplin, rekordTid);
                 konkurrence.setTræner(træner);
                 svømmers.add(konkurrence);
             } else {
-                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR, erAktiv);
+                Motionist motionist = new Motionist(navn, år, måned, dag, medlemNR, erAktiv,harBetalt);
                 svømmers.add(motionist);
             }
         }
