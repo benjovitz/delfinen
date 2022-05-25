@@ -5,14 +5,13 @@ import java.time.LocalDate;
 
 public class Træner {
 
-    private String name;
     private ArrayList<Svømmer> svømmers = new ArrayList<>();
     private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
     private Date date = new Date();
 
 
     public void tilføjMedlem(String name, int år, int måned, int dag, int medlemsNummer) {
-        Motionist motionist = new Motionist(name, år, måned, dag, medlemsNummer, true);
+        Motionist motionist = new Motionist(name, år, måned, dag, medlemsNummer, true,true);
         svømmers.add(motionist);
     }
 
@@ -27,7 +26,7 @@ public class Træner {
 
     public void tilføjKonkurrence(String name, int år, int måned, int dag, int medlemsNummer, Disciplin disciplin) {
         RekordTid rekordTid = new RekordTid(0, "N/A", 0);
-        Konkurrence konkurrence = new Konkurrence(name, år, måned, dag, medlemsNummer, true, disciplin, rekordTid);
+        Konkurrence konkurrence = new Konkurrence(name, år, måned, dag, medlemsNummer, true,true, disciplin, rekordTid);
         konkurrence.setTræner("N/A");
         svømmers.add(konkurrence);
     }
