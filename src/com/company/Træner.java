@@ -117,10 +117,11 @@ public class Træner {
         return konkurrences;
     }
 
-    public void findRekorder() {
+    public void findRekorder(Disciplin disciplin) {
         ArrayList<RekordTid> tmp = konkurrenceTider;
+        tmp = sorter(tmp,disciplin);
         tmp.sort(RekordTid::compareTo);
-        System.out.println(tmp);
+        //System.out.println(tmp);
         for (int i = 0; i < tmp.size(); i++) {
             int medlem = tmp.get(i).getMedlemsnummer();
             for (int j = tmp.size()-1; j > i; j--) {
@@ -129,9 +130,29 @@ public class Træner {
                 }
             }
         }
-        System.out.println(tmp);
+        System.out.println(tmp.get(0));
+        System.out.println(tmp.get(1));
+        System.out.println(tmp.get(2));
+        System.out.println(tmp.get(3));
+        System.out.println(tmp.get(4));
+        for (int i = 5; i <tmp.size() ; i++) {
+            if(tmp.get(i).getTime()==tmp.get(i-1).getTime()){
+                System.out.println(tmp.get(i));
+            }else{
+                i=tmp.size();
+            }
+        }
     }
-
+    public ArrayList<RekordTid> sorter(ArrayList<RekordTid> konkurrenceTider,Disciplin disciplin){
+        ArrayList<RekordTid> tmpArray = new ArrayList<>();
+        for (int i = 0; i < konkurrenceTider.size(); i++) {
+            RekordTid tmp = konkurrenceTider.get(i);
+            if(tmp.getDisciplin()==disciplin){
+                tmpArray.add(tmp);
+            }
+        }
+        return tmpArray;
+    }
     public String dagsDato() {
         int år = date.getYear() + 1900;
         int måned = date.getMonth() + 1;

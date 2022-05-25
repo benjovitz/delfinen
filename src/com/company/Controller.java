@@ -57,8 +57,8 @@ public class Controller {
     }
 
     private void seRekorder() {
-        //Disciplin tmp = vælgDisciplin();
-        træner.findRekorder();
+        Disciplin tmp = vælgDisciplin();
+        træner.findRekorder(tmp);
 
     }
 
