@@ -26,7 +26,7 @@ public class Træner {
 
 
     public void tilføjKonkurrence(String name, int år, int måned, int dag, int medlemsNummer, Disciplin disciplin) {
-        RekordTid rekordTid = new RekordTid(0, "N/A");
+        RekordTid rekordTid = new RekordTid(0, "N/A", 0);
         Konkurrence konkurrence = new Konkurrence(name, år, måned, dag, medlemsNummer, true, disciplin, rekordTid);
         konkurrence.setTræner("N/A");
         svømmers.add(konkurrence);
@@ -86,7 +86,7 @@ public class Træner {
     }
 
     public void nyRekord(Konkurrence konkurrence, double tid, String dato) {
-        RekordTid rekordTid = new RekordTid(tid, dato);
+        RekordTid rekordTid = new RekordTid(tid, dato, konkurrence.getMedlemsnummer());
         konkurrence.setRekordTid(rekordTid);
     }
 
@@ -122,7 +122,6 @@ public class Træner {
                 tmp.add(((Konkurrence) svømmers.get(i)).getRekordTid());
             }
         }
-        System.out.println(tmp);
         tmp.sort(RekordTid::compareTo);
 
         for (int i = 0; i < tmp.size(); i++) {
@@ -133,11 +132,18 @@ public class Træner {
                 }
             }
         }
-        System.out.println(tmp.get(0));
-        System.out.println(tmp.get(1));
-        System.out.println(tmp.get(2));
-        System.out.println(tmp.get(3));
-        System.out.println(tmp.get(4));
+        if (tmp.size() == 0) {
+        } else if (tmp.size() > 0) {
+            System.out.println(tmp.get(0));
+        } else if (tmp.size() > 1) {
+            System.out.println(tmp.get(1));
+        } else if (tmp.size() > 2) {
+            System.out.println(tmp.get(2));
+        } else if (tmp.size() > 3) {
+            System.out.println(tmp.get(3));
+        } else if (tmp.size() > 4) {
+            System.out.println(tmp.get(4));
+        }
         for (int i = 5; i <tmp.size() ; i++) {
             if(tmp.get(i).getTime()==tmp.get(i-1).getTime()){
                 System.out.println(tmp.get(i));

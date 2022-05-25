@@ -8,6 +8,7 @@ public class RekordTid implements Comparable<RekordTid>{
     private int medlemsnummer;
     private Disciplin disciplin;
 
+
     public RekordTid(double time, int placering, String stævne, int medlemsnummer,Disciplin disciplin){
         this.time = time;
         this.placering = placering;
@@ -16,16 +17,17 @@ public class RekordTid implements Comparable<RekordTid>{
         this.disciplin=disciplin;
     }
 
-    public RekordTid(double time, String dato){
+    public RekordTid(double time, String dato, int medlemsnummer){
         this.time = time;
         this.dato = dato;
+        this.medlemsnummer = medlemsnummer;
     }
 
     public String toString(){
         if (dato == null){
-            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer + " Disciplin: " +disciplin+"\n";
+            return  "Tid: " + time + " Placering: " + placering + " Stævne: " + stævne + " Medlemsnummer: " + medlemsnummer + " Disciplin: " + disciplin + '\n';
         } else {
-            return time + " " + dato + '\n';
+            return "Tid: "  + time + " Dato: " + dato + " Medlemsnummer: " + medlemsnummer + '\n';
         }
     }
 
