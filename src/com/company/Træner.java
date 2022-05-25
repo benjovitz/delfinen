@@ -7,7 +7,6 @@ public class Træner {
 
     private String name;
     private ArrayList<Svømmer> svømmers = new ArrayList<>();
-    private ArrayList<Konkurrence> konkurrences = new ArrayList<>();
     private ArrayList<RekordTid> konkurrenceTider = new ArrayList<>();
     private Date date = new Date();
 
@@ -113,15 +112,19 @@ public class Træner {
     }
 
 
-    public ArrayList<Konkurrence> getKonkurrences() {
-        return konkurrences;
-    }
 
     public void findRekorder(Disciplin disciplin) {
         ArrayList<RekordTid> tmp = konkurrenceTider;
         tmp = sorter(tmp,disciplin);
+        for (int i = 0; i < svømmers.size(); i++) {
+            if(svømmers.get(i) instanceof Konkurrence){
+                if(((Konkurrence) svømmers.get(i)).getDisciplin()==disciplin)
+                tmp.add(((Konkurrence) svømmers.get(i)).getRekordTid());
+            }
+        }
+        System.out.println(tmp);
         tmp.sort(RekordTid::compareTo);
-        //System.out.println(tmp);
+
         for (int i = 0; i < tmp.size(); i++) {
             int medlem = tmp.get(i).getMedlemsnummer();
             for (int j = tmp.size()-1; j > i; j--) {
