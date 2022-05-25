@@ -74,7 +74,7 @@ public class Filehandler {
                 Disciplin disciplin = Disciplin.valueOf(input.next());
                 double tid = input.nextDouble();
                 String dato = input.next();
-                RekordTid rekordTid = new RekordTid(tid, dato);
+                RekordTid rekordTid = new RekordTid(tid, dato, medlemNR);
                 String træner = input.next();
                 Konkurrence konkurrence = new Konkurrence(navn, år, måned, dag, medlemNR, erAktiv,harBetalt, disciplin, rekordTid);
                 konkurrence.setTræner(træner);
