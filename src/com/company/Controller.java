@@ -84,15 +84,31 @@ public class Controller {
             ui.udskrivKassérMenu();
             String choice = sc.nextLine();
             switch (choice) {
-                //case "1"-> restance();
+                case "1"-> restance();
                 case "2" -> indkomst();
+                case "3" -> harBetalt();
                 case "0" -> kassérBoo = false;
                 default -> ui.invalidInput();
             }
         }
     }
 
-    public void indkomst() {
+    private void restance() {
+        int samlet = 0;
+        for (Svømmer svømmer : træner.getArray()){
+            if(!svømmer.getHarbetalt()){
+                int år = svømmer.getÅr();
+                int måned = svømmer.getMåned();
+                int dag = svømmer.getDag();
+                int alder = træner.udregnAlder(år,måned,dag);
+                samlet += træner.udregnkontingent(alder,svømmer.getErAktiv());
+                System.out.println(svømmer);
+            }
+        }
+        System.out.println(samlet);
+    }
+
+    public int indkomst() {
         int samletIndkomst = 0;
         for (Svømmer svømmer : træner.getArray()) {
             int år = svømmer.getÅr();
@@ -101,9 +117,8 @@ public class Controller {
             boolean erAktiv = svømmer.getErAktiv();
             int alder = træner.udregnAlder(år, måned, dag);
             samletIndkomst += træner.udregnkontingent(alder, erAktiv);
-
         }
-        System.out.println(fmt.format(samletIndkomst));
+        return samletIndkomst;
     }
     public int indkomst2() {
         int samletIndkomst = 0;
@@ -145,6 +160,7 @@ public class Controller {
             case "1" -> tmp.setErAktiv(true);
             case "2" -> tmp.setErAktiv(false);
         }
+
     }
 
     private void fjernMedlem() throws FileNotFoundException {
@@ -249,7 +265,6 @@ public class Controller {
 
     public void redigerMedlem() throws FileNotFoundException {
         Svømmer svømmer = findSvømmer();
-        String scannerBug = sc.nextLine();
         if (svømmer != null) {
             ui.indtastNavn();
             String name = sc.nextLine();
@@ -279,8 +294,20 @@ public class Controller {
             int medlemsNummer = sc.nextInt();
             svømmer = træner.findSvømmer(medlemsNummer);
         }
+        String scannerStop = sc.nextLine();
         return svømmer;
     }
+    public void harBetalt(){
+    Svømmer tmp = findSvømmer();
+        ui.aktivOrnNot();
+    String choice = sc.nextLine();
+        switch (choice){
+        default -> ui.invalidInput();
+        case "1" -> tmp.setHarBetalt(true);
+        case "2" -> tmp.setHarBetalt(false);
+    }
+
+}
 }
 
 

@@ -95,6 +95,6 @@ public class UI {
 
     public void aktivOrnNot() {
         System.out.println("1. Aktiver medlem");
-        System.out.println("2 . Deaktiver medlem");
+        System.out.println("2. Deaktiver medlem");
     }
 }

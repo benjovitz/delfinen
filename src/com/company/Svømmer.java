@@ -64,4 +64,8 @@ public abstract class Svømmer {
     public boolean getHarbetalt() {
         return harBetalt;
     }
+
+    public void setHarBetalt(boolean harBetalt) {
+        this.harBetalt = harBetalt;
+    }
 }
