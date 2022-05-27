@@ -7,7 +7,7 @@ public abstract class Svømmer {
     protected int dag;
     private int medlemsNummer;
     protected int kontingent;
-    private boolean erAktiv = true;
+    private boolean erAktiv;
     private boolean harBetalt = true;
 
     public Svømmer(String name, int år, int måned, int dag, int medlemsNummer, boolean erAktiv,boolean harBetalt) {
